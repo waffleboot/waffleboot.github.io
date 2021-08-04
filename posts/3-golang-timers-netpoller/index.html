@@ -20,7 +20,7 @@
 <meta itemprop=description content="Прикольно. timer работает в связке с netpoller. Все таймеры кладутся в heap (структура данных) чтобы выбрать ближайший, при этом у каждого P свой heap. netpoller так-то заточен под asyncio, но блокирующий epoll syscall вызывается с таймаутом по ближайший таймер. Понятно, если придет io event, он проснется, выдаст пачку файловых дескрипторов и снова уснет, но время сна скорректируется. А если по таймауту проснется - дергаем таймер.
 Самое интересное, когда добавляем таймер который должен тикнуть раньше времени таймаута netpoller."><meta itemprop=datePublished content="2021-08-05T00:56:22+03:00">
 <meta itemprop=dateModified content="2021-08-05T00:56:22+03:00">
-<meta itemprop=wordCount content="154">
+<meta itemprop=wordCount content="169">
 <meta itemprop=keywords content><meta name=twitter:card content="summary">
 <meta name=twitter:title content="Golang таймеры и netpoller">
 <meta name=twitter:description content="Прикольно. timer работает в связке с netpoller. Все таймеры кладутся в heap (структура данных) чтобы выбрать ближайший, при этом у каждого P свой heap. netpoller так-то заточен под asyncio, но блокирующий epoll syscall вызывается с таймаутом по ближайший таймер. Понятно, если придет io event, он проснется, выдаст пачку файловых дескрипторов и снова уснет, но время сна скорректируется. А если по таймауту проснется - дергаем таймер.
@@ -60,6 +60,11 @@ POSTS
 <div class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><p>Прикольно. timer работает в связке с netpoller. Все таймеры кладутся в heap (структура данных) чтобы выбрать ближайший, при этом у каждого P свой heap. netpoller так-то заточен под asyncio, но блокирующий epoll syscall вызывается с таймаутом по ближайший таймер. Понятно, если придет io event, он проснется, выдаст пачку файловых дескрипторов и снова уснет, но время сна скорректируется. А если по таймауту проснется - дергаем таймер.</p>
 <p>Самое интересное, когда добавляем таймер который должен тикнуть раньше времени таймаута netpoller. Надо будить netpoller и давать новый таймаут. Для этого у netpoller есть netpollBreakRd/Wr, это два файловых дескриптора из pipe(). Создание такого таймера приводит в конечном счете к записи байта в netpollBreakWr и netpoller просыпается потому что есть что читать. Читает мусорный байт и выставляет новое время сна. Кажется так. Это конечно случай когда есть epoll.</p>
 <p>Таймеры освобождаются сами, но если таймаут происходит редко, то таймеры будут болтаться долго, а они <em>относительно</em> тяжелые. Короче, их хорошо бы t.Stop()</p>
+<p>Почитать по теме:</p>
+<ul>
+<li><a href=https://lk4d4.darth.io/posts/go-timers/>How Do They Do It: Timers in Go</a></li>
+<li><a href=https://medium.com/a-journey-with-go/go-timers-life-cycle-403f3580093a>Go: Timers’ Life Cycle</a></li>
+</ul>
 <ul class=pa0>
 </ul>
 <div class="mt6 instapaper_ignoref">
