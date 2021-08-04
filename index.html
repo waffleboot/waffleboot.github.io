@@ -5,7 +5,7 @@
 <title>My Site</title>
 <meta name=viewport content="width=device-width,minimum-scale=1">
 <meta name=description content>
-<meta name=generator content="Hugo 0.86.0">
+<meta name=generator content="Hugo 0.87.0">
 <meta name=ROBOTS content="NOINDEX, NOFOLLOW">
 <link rel=stylesheet href=/ananke/css/main.min.css>
 <link href=/index.xml rel=alternate type=application/rss+xml title="My Site">
@@ -46,6 +46,26 @@ My Site
 Recent Posts
 </h1>
 <section class="w-100 mw8">
+<div class="relative w-100 mb4">
+<article class="bb b--black-10">
+<div class="db pv4 ph3 ph0-l no-underline dark-gray">
+<div class="flex flex-column flex-row-ns">
+<div class="blah w-100">
+<h1 class="f3 fw1 athelas mt0 lh-title">
+<a href=/posts/2-api-config/ class="color-inherit dim link">
+Про параметры функции, публикуемых в открытый доступ
+</a>
+</h1>
+<div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
+Изучал код worker пула https://github.com/ahmetask/worker и там есть такая функция NewWorkerPool(maxWorkers, jobQueueCapacity). Я предложил сделать отдельную структуру под конфигурацию workerPoolConfig и worker пул иницилизировать не через параметры, а через функциональные опции, через &mldr;Opts. Добавить функцию buildWorkerPoolConfig, которая бы эти &mldr;Opts читала и создавала конфиг, дополнительно валидируя параметры. Заслал PR, чел отказался фиксить по причине, что сломается обратная совместимость, а либа и так простая, так что нет смысла.
+Вот и возникает вопрос.
+</div>
+<a href=/posts/2-api-config/ class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+</div>
+</div>
+</div>
+</article>
+</div>
 <div class="relative w-100 mb4">
 <article class="bb b--black-10">
 <div class="db pv4 ph3 ph0-l no-underline dark-gray">
