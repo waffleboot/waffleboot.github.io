@@ -57,7 +57,8 @@ Golang Naming
 </a>
 </h1>
 <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-for _, tt := range tests { } Смысл в удваивании имени переменной когда итерируем по слайсу.
+for _, tt := range tests { } Смысл в удваивании имени переменной когда итерируем по слайсу. Это применяется в тестах.
+tests := []struct { give string wantHost string wantPort string }{ { give: "", wantHost: "", wantPort: "", }, } for _, tt := range tests { t.Run(tt.give, func(t *testing.T) { host, port, err := net.SplitHostPort(tt.give) require.NoError(t, err) assert.Equal(t, tt.wantHost, host) assert.Equal(t, tt.wantPort, port) }) }
 </div>
 <a href=/posts/5-golang-naming/ class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
 </div>
