@@ -35,3 +35,52 @@ pool := worker.NewWorkerPool(
 ```
 
 Вот и возникает вопрос. Если бы надо было добавить дополнительный параметр, то все равно пришлось бы править эту функцию или создавать еще одну, которая воспринимала бы дополнительный параметр. А с функциональными опциями такой проблемы нет. Старый код как работал, так и будет работать, а для нового кода просто еще одна опция добавляется, с которой мы умеем работать.
+
+[Uber style guide](https://github.com/uber-go/guide/blob/master/style.md#functional-options) рекомендует использовать не функции, а интерфейсы.
+
+```
+type options struct {
+	maxWorkers       int
+	jobQueueCapacity int
+}
+
+type Option interface {
+	apply(*options)
+}
+
+type maxWorkersOption int
+
+func WithMaxWorkers(maxWorkers int) Option {
+	return maxWorkersOption(maxWorkers)
+}
+
+func (o maxWorkersOption) apply(opts *options) {
+	opts.maxWorkers = int(o)
+}
+
+func (o maxWorkersOption) String() string {
+	return strconv.Itoa(int(o))
+}
+
+type jobQueueCapacityOption int
+
+func WithJobQueueCapacity(jobQueueCapacity int) Option {
+	return jobQueueCapacityOption(jobQueueCapacity)
+}
+
+func (o jobQueueCapacityOption) apply(opts *options) {
+	opts.jobQueueCapacity = int(o)
+	if opts.jobQueueCapacity <= 0 {
+		opts.jobQueueCapacity = 100
+	}
+}
+
+func buildWorkerPoolOptions(opts ...Option) options {
+	options := options{}
+	for _, o := range opts {
+		o.apply(&options)
+	}
+	return options
+}
+
+```
