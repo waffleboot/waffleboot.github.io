@@ -46,6 +46,28 @@ Posts
 <div class="bg-white mb3 pa4 gray overflow-hidden">
 <span class="f6 db">Posts</span>
 <h1 class="f3 near-black">
+<a href=/posts/8-avito-messanger/ class="link black dim">
+Avito Messanger
+</a>
+</h1>
+<div class="nested-links f5 lh-copy nested-copy-line-height">
+Архитектура Мессенджера Авито – путь одного сообщения
+2,5 млн уников в день 1,5 млн rpm rpc запросов к бэку 500k постоянных соединений онлайн в пике websocket 7k msg/m rabbitmq mongodb redis k8s websocket
+json-rpc
+server-socket
+http-polling (http fallback)
+stripe.com/rate-limiters
+service-aggregator (+graceful degradation)
+сначала сохранение сообщения только в шард отправителя публикация событий в rabbitmq rabbitmq отказоустойчивый кластер из двух машин
+настроены политики отказоустойчивости для exchange и очередей
+</div>
+</div>
+</div>
+</div>
+<div class="relative w-100 w-30-l mb4 bg-white"><div class="relative w-100 mb4 bg-white nested-copy-line-height">
+<div class="bg-white mb3 pa4 gray overflow-hidden">
+<span class="f6 db">Posts</span>
+<h1 class="f3 near-black">
 <a href=/posts/7-golang-trace/ class="link black dim">
 Golang Trace
 </a>
