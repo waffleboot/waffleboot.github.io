@@ -1,5 +1,5 @@
 ---
-title: "Avito Messanger"
+title: "Avito messenger"
 date: 2021-08-11T04:40:32+03:00
 draft: false
 ---
