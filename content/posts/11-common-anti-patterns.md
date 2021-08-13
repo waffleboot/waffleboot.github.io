@@ -10,3 +10,4 @@ draft: false
 * Go is supposed to be simple, but it doesn’t mean you should use only primitive types.
 * Be explicit, even if it’s verbose.
 
+[еще статья про монолиты и микросервисы и Clean Arch](https://threedots.tech/post/microservices-or-monolith-its-detail/)
