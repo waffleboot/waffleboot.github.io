@@ -1,6 +1,6 @@
 ---
 title: "Anti-Patterns in Go Web"
-date: 2021-08-13T14:39:20+03:00
+date: 2021-08-14T14:39:20+03:00
 draft: false
 ---
 
