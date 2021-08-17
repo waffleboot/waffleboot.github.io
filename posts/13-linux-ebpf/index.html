@@ -1,9 +1,9 @@
-<!doctype html><html lang=en-us>
+<!doctype html><html lang=en itemscope itemtype=http://schema.org/WebPage>
 <head>
 <meta charset=utf-8>
-<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
-<title>Linux eBPF | My Site</title>
-<meta name=viewport content="width=device-width,minimum-scale=1">
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>Linux eBPF - My Site</title>
 <meta name=description content="Linux source code elixir
 woboq
 LiveGrep
@@ -18,10 +18,8 @@ Linux insides Модули ядра Linux
 linux-insides book
 linux syscalls @ linux-insides
 Docker for Mac docker for desktop kernel
-ebpf docker for mac">
-<meta name=generator content="Hugo 0.87.0">
-<meta name=ROBOTS content="NOINDEX, NOFOLLOW">
-<link rel=stylesheet href=/ananke/css/main.min.css>
+ebpf docker for mac"><script type=application/ld+json>{"@context":"http://schema.org","@type":"WebSite","name":"My Site","url":"https:\/\/waffleboot.github.io\/"}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Organization","name":"","url":"https:\/\/waffleboot.github.io\/"}</script>
+<script type=application/ld+json>{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https:\/\/waffleboot.github.io\/","name":"home"}},{"@type":"ListItem","position":3,"item":{"@id":"https:\/\/waffleboot.github.io\/posts\/13-linux-ebpf\/","name":"Linux e bpf"}}]}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Article","author":{"name":""},"headline":"Linux eBPF","description":"Linux source code elixir\nwoboq\nLiveGrep\nProbes and tracepoints kprobes\ntracepoints\nbcc reference guide\nbrendan gregg linux perf\nPosts How to turn any syscall into an event\nDebugging the eBPF Virtual Machine video\nopensnoop sample\nLinux insides Модули ядра Linux\nlinux-insides book\nlinux syscalls @ linux-insides\nDocker for Mac docker for desktop kernel\nebpf docker for mac","inLanguage":"en","wordCount":57,"datePublished":"2021-08-17T14:02:22","dateModified":"2021-08-17T14:02:22","image":"https:\/\/waffleboot.github.io\/","keywords":[""],"mainEntityOfPage":"https:\/\/waffleboot.github.io\/posts\/13-linux-ebpf\/","publisher":{"@type":"Organization","name":"https:\/\/waffleboot.github.io\/","logo":{"@type":"ImageObject","url":"https:\/\/waffleboot.github.io\/","height":60,"width":60}}}</script>
 <meta property="og:title" content="Linux eBPF">
 <meta property="og:description" content="Linux source code elixir
 woboq
@@ -38,29 +36,9 @@ linux-insides book
 linux syscalls @ linux-insides
 Docker for Mac docker for desktop kernel
 ebpf docker for mac">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://waffleboot.github.io/posts/13-linux-ebpf/"><meta property="article:section" content="posts">
-<meta property="article:published_time" content="2021-08-17T14:02:22+03:00">
-<meta property="article:modified_time" content="2021-08-17T14:02:22+03:00">
-<meta itemprop=name content="Linux eBPF">
-<meta itemprop=description content="Linux source code elixir
-woboq
-LiveGrep
-Probes and tracepoints kprobes
-tracepoints
-bcc reference guide
-brendan gregg linux perf
-Posts How to turn any syscall into an event
-Debugging the eBPF Virtual Machine video
-opensnoop sample
-Linux insides Модули ядра Linux
-linux-insides book
-linux syscalls @ linux-insides
-Docker for Mac docker for desktop kernel
-ebpf docker for mac"><meta itemprop=datePublished content="2021-08-17T14:02:22+03:00">
-<meta itemprop=dateModified content="2021-08-17T14:02:22+03:00">
-<meta itemprop=wordCount content="57">
-<meta itemprop=keywords content><meta name=twitter:card content="summary">
+<meta property="og:url" content="https://waffleboot.github.io/posts/13-linux-ebpf/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="My Site">
 <meta name=twitter:title content="Linux eBPF">
 <meta name=twitter:description content="Linux source code elixir
 woboq
@@ -70,46 +48,88 @@ tracepoints
 bcc reference guide
 brendan gregg linux perf
 Posts How to turn any syscall into an event
-Debugging the eBPF Virtual Machine video
-opensnoop sample
-Linux insides Модули ядра Linux
-linux-insides book
-linux syscalls @ linux-insides
-Docker for Mac docker for desktop kernel
-ebpf docker for mac">
+Debugging the eBPF Virtual …">
+<meta name=twitter:card content="summary">
+<meta name=generator content="Hugo 0.87.0">
+<link rel=alternate href=https://waffleboot.github.io/index.xml type=application/rss+xml title="My Site"><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css integrity=sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y crossorigin=anonymous>
+<link rel=stylesheet href=https://use.fontawesome.com/releases/v5.5.0/css/all.css integrity=sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU crossorigin=anonymous>
+<link rel=stylesheet href=https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css integrity=sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u crossorigin=anonymous><link rel=stylesheet href=https://waffleboot.github.io/css/main.css><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+<link rel=stylesheet href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"><link rel=stylesheet href=https://waffleboot.github.io/css/syntax.css><link rel=stylesheet href=https://waffleboot.github.io/css/codeblock.css><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css integrity=sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh crossorigin=anonymous>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css integrity=sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R crossorigin=anonymous>
 </head>
-<body class="ma0 avenir bg-near-white">
-<header>
-<div class=bg-black>
-<nav class="pv3 ph3 ph4-ns" role=navigation>
-<div class="flex-l justify-between items-center center">
-<a href=/ class="f3 fw2 hover-white no-underline white-90 dib">
-My Site
-</a>
-<div class="flex-l items-center">
+<body>
+<nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+<div class=container-fluid>
+<div class=navbar-header>
+<button type=button class=navbar-toggle data-toggle=collapse data-target=#main-navbar>
+<span class=sr-only>Toggle navigation</span>
+<span class=icon-bar></span>
+<span class=icon-bar></span>
+<span class=icon-bar></span>
+</button>
+<a class=navbar-brand href=https://waffleboot.github.io/>My Site</a>
+</div>
+<div class="collapse navbar-collapse" id=main-navbar>
+<ul class="nav navbar-nav navbar-right">
+</ul>
 </div>
 </div>
 </nav>
+<div class=pswp tabindex=-1 role=dialog aria-hidden=true>
+<div class=pswp__bg></div>
+<div class=pswp__scroll-wrap>
+<div class=pswp__container>
+<div class=pswp__item></div>
+<div class=pswp__item></div>
+<div class=pswp__item></div>
+</div>
+<div class="pswp__ui pswp__ui--hidden">
+<div class=pswp__top-bar>
+<div class=pswp__counter></div>
+<button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+<div class=pswp__preloader>
+<div class=pswp__preloader__icn>
+<div class=pswp__preloader__cut>
+<div class=pswp__preloader__donut></div>
+</div>
+</div>
+</div>
+</div>
+<div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+<div class=pswp__share-tooltip></div>
+</div>
+<button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+</button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+</button>
+<div class=pswp__caption>
+<div class=pswp__caption__center></div>
+</div>
+</div>
+</div>
+</div>
+<header class=header-section>
+<div class="intro-header no-img">
+<div class=container>
+<div class=row>
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<div class=posts-heading>
+<h1>Linux eBPF</h1>
+<hr class=small>
+</div>
+</div>
+</div>
+</div>
 </div>
 </header>
-<main class=pb7 role=main>
-<article class="flex-l flex-wrap justify-between mw8 center ph3">
-<header class="mt4 w-100">
-<aside class="instapaper_ignoref b helvetica tracked">
-POSTS
-</aside>
-<div id=sharing class=mt3>
-<a href="https://www.facebook.com/sharer.php?u=https://waffleboot.github.io/posts/13-linux-ebpf/" class="facebook no-underline" aria-label="share on Facebook"><svg height="32" style="enable-background:new 0 0 67 67" viewBox="0 0 67 67" width="32" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M28.765 50.32h6.744V33.998h4.499l.596-5.624h-5.095l.007-2.816c0-1.466.14-2.253 2.244-2.253h2.812V17.68h-4.5c-5.405.0-7.307 2.729-7.307 7.317v3.377h-3.369v5.625h3.369V50.32zM33 64C16.432 64 3 50.569 3 34S16.432 4 33 4s30 13.431 30 30S49.568 64 33 64z" style="fill-rule:evenodd;clip-rule:evenodd"/></svg>
-</a>
-<a href="https://twitter.com/share?url=https://waffleboot.github.io/posts/13-linux-ebpf/&text=Linux%20eBPF" class="twitter no-underline" aria-label="share on Twitter"><svg height="32" style="enable-background:new 0 0 67 67" viewBox="0 0 67 67" width="32" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167 22.283c-2.619.953-4.274 3.411-4.086 6.101l.063 1.038-1.048-.127c-3.813-.487-7.145-2.139-9.974-4.915l-1.383-1.377-.356 1.017c-.754 2.267-.272 4.661 1.299 6.271.838.89.649 1.017-.796.487-.503-.169-.943-.296-.985-.233-.146.149.356 2.076.754 2.839.545 1.06 1.655 2.097 2.871 2.712l1.027.487-1.215.021c-1.173.0-1.215.021-1.089.467.419 1.377 2.074 2.839 3.918 3.475l1.299.444-1.131.678c-1.676.976-3.646 1.526-5.616 1.568C19.775 43.256 19 43.341 19 43.405c0 .211 2.557 1.397 4.044 1.864 4.463 1.377 9.765.783 13.746-1.568 2.829-1.673 5.657-5 6.978-8.221.713-1.716 1.425-4.851 1.425-6.354.0-.975.063-1.102 1.236-2.267.692-.678 1.341-1.419 1.467-1.631.21-.403.188-.403-.88-.043-1.781.636-2.033.551-1.152-.402.649-.678 1.425-1.907 1.425-2.267.0-.063-.314.042-.671.233-.377.212-1.215.53-1.844.72l-1.131.361-1.027-.7c-.566-.381-1.361-.805-1.781-.932C39.766 21.902 38.131 21.944 37.167 22.283zM33 64C16.432 64 3 50.569 3 34S16.432 4 33 4s30 13.431 30 30S49.568 64 33 64z" style="fill-rule:evenodd;clip-rule:evenodd;fill:"/></svg>
-</a>
-<a href="https://www.linkedin.com/shareArticle?mini=true&url=https://waffleboot.github.io/posts/13-linux-ebpf/&title=Linux%20eBPF" class="linkedin no-underline" aria-label="share on LinkedIn"><svg height="32" style="enable-background:new 0 0 65 65" viewBox="0 0 65 65" width="32" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M50.837 48.137V36.425c0-6.275-3.35-9.195-7.816-9.195-3.604.0-5.219 1.983-6.119 3.374V27.71h-6.79c.09 1.917.0 20.427.0 20.427h6.79V36.729c0-.609.044-1.219.224-1.655.49-1.22 1.607-2.483 3.482-2.483 2.458.0 3.44 1.873 3.44 4.618v10.929H50.837zM22.959 24.922c2.367.0 3.842-1.57 3.842-3.531-.044-2.003-1.475-3.528-3.797-3.528s-3.841 1.524-3.841 3.528c0 1.961 1.474 3.531 3.753 3.531H22.959zM34 64C17.432 64 4 50.568 4 34 4 17.431 17.432 4 34 4s30 13.431 30 30c0 16.568-13.432 30-30 30zM26.354 48.137V27.71h-6.789v20.427h6.789z" style="fill-rule:evenodd;clip-rule:evenodd;fill:"/></svg>
-</a>
-</div>
-<h1 class="f1 athelas mt3 mb1">Linux eBPF</h1>
-<time class="f6 mv4 dib tracked" datetime=2021-08-17T14:02:22+03:00>August 17, 2021</time>
-</header>
-<div class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><h3 id=linux-source-code>Linux source code</h3>
+<div class=container role=main>
+<div class=row>
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<article role=main class=blog-post>
+<h3 id=linux-source-code>Linux source code</h3>
 <p><a href=https://elixir.bootlin.com/linux/latest/source>elixir</a></p>
 <p><a href=https://code.woboq.org/linux/linux/>woboq</a></p>
 <p><a href=https://livegrep.com/search/linux>LiveGrep</a></p>
@@ -129,23 +149,41 @@ POSTS
 <h3 id=docker-for-mac>Docker for Mac</h3>
 <p><a href=https://hub.docker.com/r/docker/for-desktop-kernel/>docker for desktop kernel</a></p>
 <p><a href=https://github.com/singe/ebpf-docker-for-mac>ebpf docker for mac</a></p>
-<ul class=pa0>
-</ul>
-<div class="mt6 instapaper_ignoref">
-</div>
-</div>
-<aside class="w-30-l mt6-l">
-</aside>
 </article>
-</main>
-<footer class="bg-black bottom-0 w-100 pa3" role=contentinfo>
-<div class="flex justify-between">
-<a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href=https://waffleboot.github.io/>
-&copy; My Site 2021
-</a>
-<div>
+<ul class="pager blog-pager">
+<li class=previous>
+<a href=https://waffleboot.github.io/posts/12-good-design/ data-toggle=tooltip data-placement=top title="Good design">&larr; Previous Post</a>
+</li>
+<li class=next>
+<a href=https://waffleboot.github.io/posts/14-linux-netpoll/ data-toggle=tooltip data-placement=top title=netpoll>Next Post &rarr;</a>
+</li>
+</ul>
 </div>
 </div>
-</footer>
+</div>
+<footer>
+<div class=container>
+<div class=row>
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<ul class="list-inline text-center footer-links">
+</ul>
+<p class="credits copyright text-muted">
+&nbsp;&bull;&nbsp;&copy;
+2021
+&nbsp;&bull;&nbsp;
+<a href=https://waffleboot.github.io/>My Site</a>
+</p>
+<p class="credits theme-by text-muted">
+<a href=https://gohugo.io>Hugo v0.87.0</a> powered &nbsp;&bull;&nbsp; Theme <a href=https://github.com/halogenica/beautifulhugo>Beautiful Hugo</a> adapted from <a href=https://deanattali.com/beautiful-jekyll/>Beautiful Jekyll</a>
+</p>
+</div>
+</div>
+</div>
+</footer><script src=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js integrity=sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js integrity=sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe crossorigin=anonymous></script>
+<script src=https://code.jquery.com/jquery-1.12.4.min.js integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin=anonymous></script>
+<script src=https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js integrity=sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa crossorigin=anonymous></script>
+<script src=https://waffleboot.github.io/js/main.js></script><script>renderMathInElement(document.body)</script><script src=https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js integrity=sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js integrity=sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q crossorigin=anonymous></script><script src=https://waffleboot.github.io/js/load-photoswipe.js></script>
 </body>
 </html>
