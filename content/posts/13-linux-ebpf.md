@@ -32,6 +32,8 @@ draft: false
 
 ### Linux insides
 
+[Модули ядра Linux](http://rus-linux.net/MyLDP/BOOKS/Moduli-yadra-Linux/kern-mod-index.html)
+
 [linux-insides book](https://0xax.gitbooks.io/linux-insides/content/)
 
 [linux syscalls @ linux-insides](https://0xax.gitbooks.io/linux-insides/content/SysCall/)
@@ -41,5 +43,3 @@ draft: false
 [docker for desktop kernel](https://hub.docker.com/r/docker/for-desktop-kernel/)
 
 [ebpf docker for mac](https://github.com/singe/ebpf-docker-for-mac)
-
-
