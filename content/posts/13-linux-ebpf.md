@@ -4,29 +4,39 @@ date: 2021-08-17T14:02:22+03:00
 draft: false
 ---
 
-[LiveGrep on linux src](https://livegrep.com/search/linux)
+### Linux source code
 
-[linux-insides book](https://0xax.gitbooks.io/linux-insides/content/)
+[elixir](https://elixir.bootlin.com/linux/latest/source)
 
-[linux syscalls @ linux-insides](https://0xax.gitbooks.io/linux-insides/content/SysCall/)
+[woboq](https://code.woboq.org/linux/linux/)
 
-[elixir.bootlin.com](https://elixir.bootlin.com/linux/latest/source)
+[LiveGrep](https://livegrep.com/search/linux)
+
+### Probes and tracepoints
 
 [kprobes](https://www.kernel.org/doc/html/latest/trace/kprobes.html)
 
 [tracepoints](https://www.kernel.org/doc/html/latest/trace/tracepoints.html)
 
-[woboq linux](https://code.woboq.org/linux/linux/)
+[bcc reference guide](https://github.com/iovisor/bcc/blob/master/docs/reference_guide.md)
 
-[opensnoop](https://bolinfest.github.io/opensnoop-native/)
+[brendan gregg linux perf](https://brendangregg.com/linuxperf.html)
 
-[linux perf](https://brendangregg.com/linuxperf.html)
-
-[Debugging the eBPF Virtual Machine](https://www.youtube.com/watch?v=W6rgaghycFI)
+### Posts
 
 [How to turn any syscall into an event](https://blog.yadutaf.fr/2016/03/30/turn-any-syscall-into-event-introducing-ebpf-kernel-probes/)
 
-[bcc reference guide](https://github.com/iovisor/bcc/blob/master/docs/reference_guide.md)
+[Debugging the eBPF Virtual Machine video](https://www.youtube.com/watch?v=W6rgaghycFI)
+
+[opensnoop sample](https://bolinfest.github.io/opensnoop-native/)
+
+### Linux insides
+
+[linux-insides book](https://0xax.gitbooks.io/linux-insides/content/)
+
+[linux syscalls @ linux-insides](https://0xax.gitbooks.io/linux-insides/content/SysCall/)
+
+### Docker for Mac
 
 [docker for desktop kernel](https://hub.docker.com/r/docker/for-desktop-kernel/)
 
