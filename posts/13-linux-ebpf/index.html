@@ -4,74 +4,74 @@
 <meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
 <title>Linux eBPF | My Site</title>
 <meta name=viewport content="width=device-width,minimum-scale=1">
-<meta name=description content="LiveGrep on linux src
-linux-insides book
-linux syscalls @ linux-insides
-elixir.bootlin.com
-kprobes
+<meta name=description content="Linux source code elixir
+woboq
+LiveGrep
+Probes and tracepoints kprobes
 tracepoints
-woboq linux
-opensnoop
-linux perf
-Debugging the eBPF Virtual Machine
-How to turn any syscall into an event
 bcc reference guide
-docker for desktop kernel
+brendan gregg linux perf
+Posts How to turn any syscall into an event
+Debugging the eBPF Virtual Machine video
+opensnoop sample
+Linux insides linux-insides book
+linux syscalls @ linux-insides
+Docker for Mac docker for desktop kernel
 ebpf docker for mac">
 <meta name=generator content="Hugo 0.87.0">
 <meta name=ROBOTS content="NOINDEX, NOFOLLOW">
 <link rel=stylesheet href=/ananke/css/main.min.css>
 <meta property="og:title" content="Linux eBPF">
-<meta property="og:description" content="LiveGrep on linux src
-linux-insides book
-linux syscalls @ linux-insides
-elixir.bootlin.com
-kprobes
+<meta property="og:description" content="Linux source code elixir
+woboq
+LiveGrep
+Probes and tracepoints kprobes
 tracepoints
-woboq linux
-opensnoop
-linux perf
-Debugging the eBPF Virtual Machine
-How to turn any syscall into an event
 bcc reference guide
-docker for desktop kernel
+brendan gregg linux perf
+Posts How to turn any syscall into an event
+Debugging the eBPF Virtual Machine video
+opensnoop sample
+Linux insides linux-insides book
+linux syscalls @ linux-insides
+Docker for Mac docker for desktop kernel
 ebpf docker for mac">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://waffleboot.github.io/posts/13-linux-ebpf/"><meta property="article:section" content="posts">
 <meta property="article:published_time" content="2021-08-17T14:02:22+03:00">
 <meta property="article:modified_time" content="2021-08-17T14:02:22+03:00">
 <meta itemprop=name content="Linux eBPF">
-<meta itemprop=description content="LiveGrep on linux src
-linux-insides book
-linux syscalls @ linux-insides
-elixir.bootlin.com
-kprobes
+<meta itemprop=description content="Linux source code elixir
+woboq
+LiveGrep
+Probes and tracepoints kprobes
 tracepoints
-woboq linux
-opensnoop
-linux perf
-Debugging the eBPF Virtual Machine
-How to turn any syscall into an event
 bcc reference guide
-docker for desktop kernel
+brendan gregg linux perf
+Posts How to turn any syscall into an event
+Debugging the eBPF Virtual Machine video
+opensnoop sample
+Linux insides linux-insides book
+linux syscalls @ linux-insides
+Docker for Mac docker for desktop kernel
 ebpf docker for mac"><meta itemprop=datePublished content="2021-08-17T14:02:22+03:00">
 <meta itemprop=dateModified content="2021-08-17T14:02:22+03:00">
-<meta itemprop=wordCount content="42">
+<meta itemprop=wordCount content="54">
 <meta itemprop=keywords content><meta name=twitter:card content="summary">
 <meta name=twitter:title content="Linux eBPF">
-<meta name=twitter:description content="LiveGrep on linux src
-linux-insides book
-linux syscalls @ linux-insides
-elixir.bootlin.com
-kprobes
+<meta name=twitter:description content="Linux source code elixir
+woboq
+LiveGrep
+Probes and tracepoints kprobes
 tracepoints
-woboq linux
-opensnoop
-linux perf
-Debugging the eBPF Virtual Machine
-How to turn any syscall into an event
 bcc reference guide
-docker for desktop kernel
+brendan gregg linux perf
+Posts How to turn any syscall into an event
+Debugging the eBPF Virtual Machine video
+opensnoop sample
+Linux insides linux-insides book
+linux syscalls @ linux-insides
+Docker for Mac docker for desktop kernel
 ebpf docker for mac">
 </head>
 <body class="ma0 avenir bg-near-white">
@@ -105,18 +105,23 @@ POSTS
 <h1 class="f1 athelas mt3 mb1">Linux eBPF</h1>
 <time class="f6 mv4 dib tracked" datetime=2021-08-17T14:02:22+03:00>August 17, 2021</time>
 </header>
-<div class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><p><a href=https://livegrep.com/search/linux>LiveGrep on linux src</a></p>
-<p><a href=https://0xax.gitbooks.io/linux-insides/content/>linux-insides book</a></p>
-<p><a href=https://0xax.gitbooks.io/linux-insides/content/SysCall/>linux syscalls @ linux-insides</a></p>
-<p><a href=https://elixir.bootlin.com/linux/latest/source>elixir.bootlin.com</a></p>
+<div class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><h3 id=linux-source-code>Linux source code</h3>
+<p><a href=https://elixir.bootlin.com/linux/latest/source>elixir</a></p>
+<p><a href=https://code.woboq.org/linux/linux/>woboq</a></p>
+<p><a href=https://livegrep.com/search/linux>LiveGrep</a></p>
+<h3 id=probes-and-tracepoints>Probes and tracepoints</h3>
 <p><a href=https://www.kernel.org/doc/html/latest/trace/kprobes.html>kprobes</a></p>
 <p><a href=https://www.kernel.org/doc/html/latest/trace/tracepoints.html>tracepoints</a></p>
-<p><a href=https://code.woboq.org/linux/linux/>woboq linux</a></p>
-<p><a href=https://bolinfest.github.io/opensnoop-native/>opensnoop</a></p>
-<p><a href=https://brendangregg.com/linuxperf.html>linux perf</a></p>
-<p><a href="https://www.youtube.com/watch?v=W6rgaghycFI">Debugging the eBPF Virtual Machine</a></p>
-<p><a href=https://blog.yadutaf.fr/2016/03/30/turn-any-syscall-into-event-introducing-ebpf-kernel-probes/>How to turn any syscall into an event</a></p>
 <p><a href=https://github.com/iovisor/bcc/blob/master/docs/reference_guide.md>bcc reference guide</a></p>
+<p><a href=https://brendangregg.com/linuxperf.html>brendan gregg linux perf</a></p>
+<h3 id=posts>Posts</h3>
+<p><a href=https://blog.yadutaf.fr/2016/03/30/turn-any-syscall-into-event-introducing-ebpf-kernel-probes/>How to turn any syscall into an event</a></p>
+<p><a href="https://www.youtube.com/watch?v=W6rgaghycFI">Debugging the eBPF Virtual Machine video</a></p>
+<p><a href=https://bolinfest.github.io/opensnoop-native/>opensnoop sample</a></p>
+<h3 id=linux-insides>Linux insides</h3>
+<p><a href=https://0xax.gitbooks.io/linux-insides/content/>linux-insides book</a></p>
+<p><a href=https://0xax.gitbooks.io/linux-insides/content/SysCall/>linux syscalls @ linux-insides</a></p>
+<h3 id=docker-for-mac>Docker for Mac</h3>
 <p><a href=https://hub.docker.com/r/docker/for-desktop-kernel/>docker for desktop kernel</a></p>
 <p><a href=https://github.com/singe/ebpf-docker-for-mac>ebpf docker for mac</a></p>
 <ul class=pa0>

@@ -1,16 +1,16 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>My Site</title><link>https://waffleboot.github.io/</link><description>Recent content on My Site</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 17 Aug 2021 14:02:22 +0300</lastBuildDate><atom:link href="https://waffleboot.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Linux eBPF</title><link>https://waffleboot.github.io/posts/13-linux-ebpf/</link><pubDate>Tue, 17 Aug 2021 14:02:22 +0300</pubDate><guid>https://waffleboot.github.io/posts/13-linux-ebpf/</guid><description>LiveGrep on linux src
-linux-insides book
-linux syscalls @ linux-insides
-elixir.bootlin.com
-kprobes
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>My Site</title><link>https://waffleboot.github.io/</link><description>Recent content on My Site</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 17 Aug 2021 14:02:22 +0300</lastBuildDate><atom:link href="https://waffleboot.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Linux eBPF</title><link>https://waffleboot.github.io/posts/13-linux-ebpf/</link><pubDate>Tue, 17 Aug 2021 14:02:22 +0300</pubDate><guid>https://waffleboot.github.io/posts/13-linux-ebpf/</guid><description>Linux source code elixir
+woboq
+LiveGrep
+Probes and tracepoints kprobes
 tracepoints
-woboq linux
-opensnoop
-linux perf
-Debugging the eBPF Virtual Machine
-How to turn any syscall into an event
 bcc reference guide
-docker for desktop kernel
+brendan gregg linux perf
+Posts How to turn any syscall into an event
+Debugging the eBPF Virtual Machine video
+opensnoop sample
+Linux insides linux-insides book
+linux syscalls @ linux-insides
+Docker for Mac docker for desktop kernel
 ebpf docker for mac</description></item><item><title>Good design</title><link>https://waffleboot.github.io/posts/12-good-design/</link><pubDate>Mon, 16 Aug 2021 14:39:20 +0300</pubDate><guid>https://waffleboot.github.io/posts/12-good-design/</guid><description>Good design should not allow using our code in an invalid way.</description></item><item><title>Anti-Patterns in Go Web</title><link>https://waffleboot.github.io/posts/11-common-anti-patterns/</link><pubDate>Sat, 14 Aug 2021 14:39:20 +0300</pubDate><guid>https://waffleboot.github.io/posts/11-common-anti-patterns/</guid><description>Common Anti-Patterns in Go Web Applications от threedots
 The important part is not how you split them but how they’re connected. Go is supposed to be simple, but it doesn’t mean you should use only primitive types. Be explicit, even if it’s verbose. еще статья про монолиты и микросервисы и Clean Arch</description></item><item><title>checklist</title><link>https://waffleboot.github.io/posts/10-check-list/</link><pubDate>Thu, 12 Aug 2021 21:13:52 +0300</pubDate><guid>https://waffleboot.github.io/posts/10-check-list/</guid><description>чеклист
 В коде Установлены таймауты на обращения ко всем внешним сервисам, ретраи - опционально Для простых REST-запросов &amp;ldquo;обычный&amp;rdquo; таймаут (на всю операцию) Для скачивания/загрузки файлов (и других поточных запросов) &amp;ldquo;динамический&amp;rdquo; таймаут (на один блок в потоке) Для бесшовного деплоя сервисов, обрабатывающих http-запросы, настроена пауза между получением сигнала (SIGINT, SIGTERM) и отключением приема соединений. &amp;lt;тут линк на страницу, где было исследование&amp;gt;. Если есть подключение к СУБД - установлен лимит на количество подключений Рекомендация: именованные подключения к СУБД (для postgres пример: postgresql://other@localhost/otherdb?</description></item><item><title>Avito messenger</title><link>https://waffleboot.github.io/posts/8-avito-messenger/</link><pubDate>Wed, 11 Aug 2021 04:40:32 +0300</pubDate><guid>https://waffleboot.github.io/posts/8-avito-messenger/</guid><description>Архитектура Мессенджера Авито – путь одного сообщения
