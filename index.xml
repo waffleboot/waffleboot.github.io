@@ -13,18 +13,20 @@ Golang Net HTTP Server
 epoll - from the kernel side</description></item><item><title>Linux eBPF</title><link>https://waffleboot.github.io/posts/13-linux-ebpf/</link><pubDate>Tue, 17 Aug 2021 14:02:22 +0300</pubDate><guid>https://waffleboot.github.io/posts/13-linux-ebpf/</guid><description>Linux source code elixir
 woboq
 LiveGrep
-Probes and tracepoints kprobes
+Probes and tracepoints bpftrace
+bpftrace Reference Guide
+kprobes
 tracepoints
 bcc reference guide
 brendan gregg linux perf
+The art of writing eBPF programs: a primer.
 Posts How to turn any syscall into an event
 Debugging the eBPF Virtual Machine video
 opensnoop sample
+Getting started with Linux kernel development
+Tracing a packet journey using Linux tracepoints, perf and eBPF
 Linux insides Модули ядра Linux
-linux-insides book
-linux syscalls @ linux-insides
-Docker for Mac docker for desktop kernel
-ebpf docker for mac</description></item><item><title>Good design</title><link>https://waffleboot.github.io/posts/12-good-design/</link><pubDate>Mon, 16 Aug 2021 14:39:20 +0300</pubDate><guid>https://waffleboot.github.io/posts/12-good-design/</guid><description>Good design should not allow using our code in an invalid way.</description></item><item><title>Anti-Patterns in Go Web</title><link>https://waffleboot.github.io/posts/11-common-anti-patterns/</link><pubDate>Sat, 14 Aug 2021 14:39:20 +0300</pubDate><guid>https://waffleboot.github.io/posts/11-common-anti-patterns/</guid><description>Common Anti-Patterns in Go Web Applications от threedots
+linux-insides book</description></item><item><title>Good design</title><link>https://waffleboot.github.io/posts/12-good-design/</link><pubDate>Mon, 16 Aug 2021 14:39:20 +0300</pubDate><guid>https://waffleboot.github.io/posts/12-good-design/</guid><description>Good design should not allow using our code in an invalid way.</description></item><item><title>Anti-Patterns in Go Web</title><link>https://waffleboot.github.io/posts/11-common-anti-patterns/</link><pubDate>Sat, 14 Aug 2021 14:39:20 +0300</pubDate><guid>https://waffleboot.github.io/posts/11-common-anti-patterns/</guid><description>Common Anti-Patterns in Go Web Applications от threedots
 The important part is not how you split them but how they’re connected. Go is supposed to be simple, but it doesn’t mean you should use only primitive types. Be explicit, even if it’s verbose. еще статья про монолиты и микросервисы и Clean Arch</description></item><item><title>checklist</title><link>https://waffleboot.github.io/posts/10-check-list/</link><pubDate>Thu, 12 Aug 2021 21:13:52 +0300</pubDate><guid>https://waffleboot.github.io/posts/10-check-list/</guid><description>чеклист
 В коде Установлены таймауты на обращения ко всем внешним сервисам, ретраи - опционально Для простых REST-запросов &amp;ldquo;обычный&amp;rdquo; таймаут (на всю операцию) Для скачивания/загрузки файлов (и других поточных запросов) &amp;ldquo;динамический&amp;rdquo; таймаут (на один блок в потоке) Для бесшовного деплоя сервисов, обрабатывающих http-запросы, настроена пауза между получением сигнала (SIGINT, SIGTERM) и отключением приема соединений. &amp;lt;тут линк на страницу, где было исследование&amp;gt;. Если есть подключение к СУБД - установлен лимит на количество подключений Рекомендация: именованные подключения к СУБД (для postgres пример: postgresql://other@localhost/otherdb?</description></item><item><title>Avito messenger</title><link>https://waffleboot.github.io/posts/8-avito-messenger/</link><pubDate>Wed, 11 Aug 2021 04:40:32 +0300</pubDate><guid>https://waffleboot.github.io/posts/8-avito-messenger/</guid><description>Архитектура Мессенджера Авито – путь одного сообщения
 2,5 млн уников в день 1,5 млн rpm rpc запросов к бэку 500k постоянных соединений онлайн в пике websocket 7k msg/m rabbitmq mongodb redis k8s websocket
