@@ -147,11 +147,13 @@ git reset --hard master@{1}
 <p><strong>refs/remotes/&lt;refname>/HEAD</strong></p>
 </li>
 </ol>
-<p><code>HEAD</code> names the commit on which you based the changes in the working tree.<br>
-<code>FETCH_HEAD</code> records the branch which you fetched from a remote repository with your last <code>git fetch</code> invocation.<br>
-<code>ORIG_HEAD</code> is created by commands that move your <code>HEAD</code> in a drastic way, to record the position of the <code>HEAD</code> before their operation, so that you can easily change the tip of the branch back to the state before you ran them.<br>
-<code>MERGE_HEAD</code> records the commit(s) which you are merging into your branch when you run <code>git merge</code>.<br>
-<code>CHERRY_PICK_HEAD</code> records the commit which you are cherry-picking when you run <code>git cherry-pick</code>.</p>
+<ul>
+<li><code>HEAD</code> names the commit on which you based the changes in the working tree.</li>
+<li><code>FETCH_HEAD</code> records the branch which you fetched from a remote repository with your last <code>git fetch</code> invocation.</li>
+<li><code>ORIG_HEAD</code> is created by commands that move your <code>HEAD</code> in a drastic way, to record the position of the <code>HEAD</code> before their operation, so that you can easily change the tip of the branch back to the state before you ran them.</li>
+<li><code>MERGE_HEAD</code> records the commit(s) which you are merging into your branch when you run <code>git merge</code>.</li>
+<li><code>CHERRY_PICK_HEAD</code> records the commit which you are cherry-picking when you run <code>git cherry-pick</code>.</li>
+</ul>
 <p>Note that any of the <strong>refs/</strong>* cases above may come either from the **.git/refs** directory or from the **.git/packed-refs** file.</p>
 <h4 id=heading>@</h4>
 <p><strong>@</strong> alone is a shortcut for <code>HEAD</code></p>
