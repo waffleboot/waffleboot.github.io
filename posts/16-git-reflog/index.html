@@ -9,7 +9,7 @@
 Например, изменения в HEAD (или .git/HEAD) пишутся в .git/logs/HEAD
 Обычно git reflog показывает только историю HEAD
 4939906 HEAD@{0}: checkout: moving from test to master 494e06a HEAD@{1}: checkout: moving from master to test 4939906 HEAD@{2}: checkout: moving from 379e743595f56cb0b4177fd248c84c47523a4e6b to master 379e743 HEAD@{3}: checkout: moving from master to 379e743595f56cb0b4177fd248c84c47523a4e6b 4939906 HEAD@{4}: clone: from https://github."><script type=application/ld+json>{"@context":"http://schema.org","@type":"WebSite","name":"yangand","url":"https:\/\/waffleboot.github.io\/"}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Organization","name":"","url":"https:\/\/waffleboot.github.io\/"}</script>
-<script type=application/ld+json>{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https:\/\/waffleboot.github.io\/","name":"home"}},{"@type":"ListItem","position":3,"item":{"@id":"https:\/\/waffleboot.github.io\/posts\/16-git-reflog\/","name":"Git reflog"}}]}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Article","author":{"name":""},"headline":"Git Reflog","description":"TL;DR: to restore git history\n git reflog master git reset --hard @{1}  git reflog git все изменения в refs (ссылках) пишет в логи .git\/logs\/\nНапример, изменения в HEAD (или .git\/HEAD) пишутся в .git\/logs\/HEAD\nОбычно git reflog показывает только историю HEAD\n4939906 HEAD@{0}: checkout: moving from test to master 494e06a HEAD@{1}: checkout: moving from master to test 4939906 HEAD@{2}: checkout: moving from 379e743595f56cb0b4177fd248c84c47523a4e6b to master 379e743 HEAD@{3}: checkout: moving from master to 379e743595f56cb0b4177fd248c84c47523a4e6b 4939906 HEAD@{4}: clone: from https:\/\/github.","inLanguage":"en","wordCount":594,"datePublished":"2021-08-20T01:05:06","dateModified":"2021-08-20T01:05:06","image":"https:\/\/waffleboot.github.io\/","keywords":[""],"mainEntityOfPage":"https:\/\/waffleboot.github.io\/posts\/16-git-reflog\/","publisher":{"@type":"Organization","name":"https:\/\/waffleboot.github.io\/","logo":{"@type":"ImageObject","url":"https:\/\/waffleboot.github.io\/","height":60,"width":60}}}</script>
+<script type=application/ld+json>{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https:\/\/waffleboot.github.io\/","name":"home"}},{"@type":"ListItem","position":3,"item":{"@id":"https:\/\/waffleboot.github.io\/posts\/16-git-reflog\/","name":"Git reflog"}}]}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Article","author":{"name":""},"headline":"Git Reflog","description":"TL;DR: to restore git history\n git reflog master git reset --hard @{1}  git reflog git все изменения в refs (ссылках) пишет в логи .git\/logs\/\nНапример, изменения в HEAD (или .git\/HEAD) пишутся в .git\/logs\/HEAD\nОбычно git reflog показывает только историю HEAD\n4939906 HEAD@{0}: checkout: moving from test to master 494e06a HEAD@{1}: checkout: moving from master to test 4939906 HEAD@{2}: checkout: moving from 379e743595f56cb0b4177fd248c84c47523a4e6b to master 379e743 HEAD@{3}: checkout: moving from master to 379e743595f56cb0b4177fd248c84c47523a4e6b 4939906 HEAD@{4}: clone: from https:\/\/github.","inLanguage":"en","wordCount":629,"datePublished":"2021-08-20T01:05:06","dateModified":"2021-08-20T01:05:06","image":"https:\/\/waffleboot.github.io\/","keywords":[""],"mainEntityOfPage":"https:\/\/waffleboot.github.io\/posts\/16-git-reflog\/","publisher":{"@type":"Organization","name":"https:\/\/waffleboot.github.io\/","logo":{"@type":"ImageObject","url":"https:\/\/waffleboot.github.io\/","height":60,"width":60}}}</script>
 <meta property="og:title" content="Git Reflog">
 <meta property="og:description" content="TL;DR: to restore git history
  git reflog master git reset --hard @{1}  git reflog git все изменения в refs (ссылках) пишет в логи .git/logs/
@@ -165,6 +165,16 @@ git reset --hard master@{1}
 <p>The construct <strong>@{-&lt;n>}</strong> means the th branch/commit checked out before the current one.</p>
 <p>Т.е. можно исправить ошибочный rebase командой</p>
 <pre><code>git reset --hard @{1}
+</code></pre><h2 id=способы-указания-ref>способы указания ref</h2>
+<pre><code>! git reflog
+! git reflog yangand
+  git reflog heads/yangand
+  git reflog tags/yangand (смотреть перемещение тэга)
+  git reflog refs/heads/yangand
+  git reflog refs/remotes/origin/HEAD
+  git reflog refs/remotes/origin/yangand
+  git reflog remotes/origin/yangand
+! git reflog origin/yangand
 </code></pre>
 </article>
 <ul class="pager blog-pager">
