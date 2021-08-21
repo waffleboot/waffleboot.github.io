@@ -88,3 +88,17 @@ The construct **@{-\<n>}** means the <n>th branch/commit checked out before the 
 ```
 git reset --hard @{1}
 ```
+
+## способы указания ref
+
+```
+! git reflog
+! git reflog yangand
+  git reflog heads/yangand
+  git reflog tags/yangand (смотреть перемещение тэга)
+  git reflog refs/heads/yangand
+  git reflog refs/remotes/origin/HEAD
+  git reflog refs/remotes/origin/yangand
+  git reflog remotes/origin/yangand
+! git reflog origin/yangand
+```
