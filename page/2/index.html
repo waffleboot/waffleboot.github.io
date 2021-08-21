@@ -90,6 +90,44 @@
 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 <div class=posts-list>
 <article class=post-preview>
+<a href=https://waffleboot.github.io/posts/5-golang-naming/>
+<h2 class=post-title>Golang Naming</h2>
+</a>
+<p class=post-meta>
+<span class=post-meta>
+<i class="fas fa-calendar"></i>&nbsp;Posted on August 7, 2021
+&nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;
+</span>
+</p>
+<div class=post-entry>
+<pre><code>for _, tt := range tests {
+}
+</code></pre><p>Смысл в удваивании имени переменной когда итерируем по слайсу.
+Это применяется в тестах.</p>
+<pre><code>tests := []struct {
+	give     string
+	wantHost string
+	wantPort string
+}{
+	{
+		give:     &quot;&quot;,
+		wantHost: &quot;&quot;,
+		wantPort: &quot;&quot;,
+	},
+}
+
+for _, tt := range tests {
+  t.Run(tt.give, func(t *testing.T) {
+    host, port, err := net.SplitHostPort(tt.give)
+    require.NoError(t, err)
+    assert.Equal(t, tt.wantHost, host)
+    assert.Equal(t, tt.wantPort, port)
+  })
+}
+</code></pre>
+</div>
+</article>
+<article class=post-preview>
 <a href=https://waffleboot.github.io/posts/4-gopher-academy-blog/>
 <h2 class=post-title>GopherAcademy Blog</h2>
 </a>
