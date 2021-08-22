@@ -90,6 +90,23 @@
 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 <div class=posts-list>
 <article class=post-preview>
+<a href=https://waffleboot.github.io/posts/7-golang-trace/>
+<h2 class=post-title>Golang Trace</h2>
+</a>
+<p class=post-meta>
+<span class=post-meta>
+<i class="fas fa-calendar"></i>&nbsp;Posted on August 10, 2021
+&nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;
+</span>
+</p>
+<div class=post-entry>
+это программа
+func main() { f, err := os.Create("trace.out") if err != nil { log.Fatal(err) } defer f.Close() if err := trace.Start(f); err != nil { log.Fatal(err) } go func() { // runtime.PreemptNS(1000) for { _x++ } }() &lt;-time.After(3 * time.Second) runtime.GC() defer trace.Stop() } это содержимое trace.out при запуске с GOMAXPROCS=1
+// сначала идет список горутин на момент запуска trace.Start // G1 в статусе running, остальные в статусе waiting потому что P у нас только один 1: GoCreate /Users/yangand/Workspace/go_infinite_loop/main.
+<a href=https://waffleboot.github.io/posts/7-golang-trace/ class=post-read-more>[Read More]</a>
+</div>
+</article>
+<article class=post-preview>
 <a href=https://waffleboot.github.io/posts/5-golang-naming/>
 <h2 class=post-title>Golang Naming</h2>
 </a>
