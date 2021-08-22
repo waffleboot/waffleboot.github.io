@@ -12,3 +12,7 @@ draft: false
 * `listening_hash` как простое хранилище listen-сокетов
 
 [linux listen socket lookup](https://programmer.ink/think/change-of-tcp-listen-socket-lookup-in-linux.html)
+
+Размер ehash таблицы регулируется параметром thash_entries. The default is 65536 entries for every gigabyte of memory. In other words, an 8-gigabyte system will have 512k hash entries. Но этого более чем достаточно.
+
+А вообще все параметры можно посмотреть в [ip-sysctl.txt](https://elixir.bootlin.com/linux/v5.7/source/Documentation/networking/ip-sysctl.txt).
