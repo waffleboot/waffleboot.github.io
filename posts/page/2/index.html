@@ -90,6 +90,29 @@
 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 <div class=posts-list>
 <article class=post-preview>
+<a href=https://waffleboot.github.io/posts/8-avito-messenger/>
+<h2 class=post-title>Avito messenger</h2>
+</a>
+<p class=post-meta>
+<span class=post-meta>
+<i class="fas fa-calendar"></i>&nbsp;Posted on August 11, 2021
+&nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;
+</span>
+</p>
+<div class=post-entry>
+Архитектура Мессенджера Авито – путь одного сообщения
+2,5 млн уников в день 1,5 млн rpm rpc запросов к бэку 500k постоянных соединений онлайн в пике websocket 7k msg/m rabbitmq mongodb redis k8s websocket
+json-rpc
+server-socket
+http-polling (http fallback)
+stripe.com/rate-limiters
+service-aggregator (+graceful degradation)
+сначала сохранение сообщения только в шард отправителя публикация событий в rabbitmq rabbitmq отказоустойчивый кластер из двух машин
+настроены политики отказоустойчивости для exchange и очередей
+<a href=https://waffleboot.github.io/posts/8-avito-messenger/ class=post-read-more>[Read More]</a>
+</div>
+</article>
+<article class=post-preview>
 <a href=https://waffleboot.github.io/posts/7-golang-trace/>
 <h2 class=post-title>Golang Trace</h2>
 </a>

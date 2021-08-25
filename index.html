@@ -90,6 +90,37 @@
 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 <div class=posts-list>
 <article class=post-preview>
+<a href=https://waffleboot.github.io/posts/19-code-style/>
+<h2 class=post-title>C++ code style</h2>
+</a>
+<p class=post-meta>
+<span class=post-meta>
+<i class="fas fa-calendar"></i>&nbsp;Posted on August 22, 2021
+&nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;
+</span>
+</p>
+<div class=post-entry>
+<p><a href=https://google.github.io/styleguide/cppguide.html>google style guide</a></p>
+<ul>
+<li>types
+<ul>
+<li>typedef</li>
+<li>using</li>
+<li>enum</li>
+<li>nested structs and classes</li>
+</ul>
+</li>
+<li>constants</li>
+<li>factory functions</li>
+<li>constructors</li>
+<li>assignment operators</li>
+<li>destructor</li>
+<li>all other methods</li>
+<li>data members</li>
+</ul>
+</div>
+</article>
+<article class=post-preview>
 <a href=https://waffleboot.github.io/posts/18-python-scons-mongo/>
 <h2 class=post-title>Python scons build tool</h2>
 </a>
@@ -259,29 +290,6 @@ linux-insides book
 чеклист
 В коде Установлены таймауты на обращения ко всем внешним сервисам, ретраи - опционально Для простых REST-запросов &ldquo;обычный&rdquo; таймаут (на всю операцию) Для скачивания/загрузки файлов (и других поточных запросов) &ldquo;динамический&rdquo; таймаут (на один блок в потоке) Для бесшовного деплоя сервисов, обрабатывающих http-запросы, настроена пауза между получением сигнала (SIGINT, SIGTERM) и отключением приема соединений. &lt;тут линк на страницу, где было исследование>. Если есть подключение к СУБД - установлен лимит на количество подключений Рекомендация: именованные подключения к СУБД (для postgres пример: postgresql://other@localhost/otherdb?
 <a href=https://waffleboot.github.io/posts/10-check-list/ class=post-read-more>[Read More]</a>
-</div>
-</article>
-<article class=post-preview>
-<a href=https://waffleboot.github.io/posts/8-avito-messenger/>
-<h2 class=post-title>Avito messenger</h2>
-</a>
-<p class=post-meta>
-<span class=post-meta>
-<i class="fas fa-calendar"></i>&nbsp;Posted on August 11, 2021
-&nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;
-</span>
-</p>
-<div class=post-entry>
-Архитектура Мессенджера Авито – путь одного сообщения
-2,5 млн уников в день 1,5 млн rpm rpc запросов к бэку 500k постоянных соединений онлайн в пике websocket 7k msg/m rabbitmq mongodb redis k8s websocket
-json-rpc
-server-socket
-http-polling (http fallback)
-stripe.com/rate-limiters
-service-aggregator (+graceful degradation)
-сначала сохранение сообщения только в шард отправителя публикация событий в rabbitmq rabbitmq отказоустойчивый кластер из двух машин
-настроены политики отказоустойчивости для exchange и очередей
-<a href=https://waffleboot.github.io/posts/8-avito-messenger/ class=post-read-more>[Read More]</a>
 </div>
 </article>
 </div>
