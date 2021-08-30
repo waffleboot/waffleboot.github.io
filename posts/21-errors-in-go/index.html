@@ -1,0 +1,184 @@
+<!doctype html><html lang=en itemscope itemtype=http://schema.org/WebPage>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>Errors in Go 1.13 - yangand</title>
+<meta name=description content="Errors in Go 1.13 Whether to Wrap When adding additional context to an error, either with fmt.Errorf or by implementing a custom type, you need to decide whether the new error should wrap the original. There is no single answer to this question; it depends on the context in which the new error is created. Wrap an error to expose it to callers. Do not wrap an error when doing so would expose implementation details."><script type=application/ld+json>{"@context":"http://schema.org","@type":"WebSite","name":"yangand","url":"https:\/\/waffleboot.github.io\/"}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Organization","name":"","url":"https:\/\/waffleboot.github.io\/"}</script>
+<script type=application/ld+json>{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https:\/\/waffleboot.github.io\/","name":"home"}},{"@type":"ListItem","position":3,"item":{"@id":"https:\/\/waffleboot.github.io\/posts\/21-errors-in-go\/","name":"Errors in go 1.13"}}]}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Article","author":{"name":""},"headline":"Errors in Go 1.13","description":"Errors in Go 1.13 Whether to Wrap When adding additional context to an error, either with fmt.Errorf or by implementing a custom type, you need to decide whether the new error should wrap the original. There is no single answer to this question; it depends on the context in which the new error is created. Wrap an error to expose it to callers. Do not wrap an error when doing so would expose implementation details.","inLanguage":"en","wordCount":719,"datePublished":"2021-08-30T02:38:04","dateModified":"2021-08-30T02:38:04","image":"https:\/\/waffleboot.github.io\/","keywords":[""],"mainEntityOfPage":"https:\/\/waffleboot.github.io\/posts\/21-errors-in-go\/","publisher":{"@type":"Organization","name":"https:\/\/waffleboot.github.io\/","logo":{"@type":"ImageObject","url":"https:\/\/waffleboot.github.io\/","height":60,"width":60}}}</script>
+<meta property="og:title" content="Errors in Go 1.13">
+<meta property="og:description" content="Errors in Go 1.13 Whether to Wrap When adding additional context to an error, either with fmt.Errorf or by implementing a custom type, you need to decide whether the new error should wrap the original. There is no single answer to this question; it depends on the context in which the new error is created. Wrap an error to expose it to callers. Do not wrap an error when doing so would expose implementation details.">
+<meta property="og:url" content="https://waffleboot.github.io/posts/21-errors-in-go/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="yangand">
+<meta name=twitter:title content="Errors in Go 1.13">
+<meta name=twitter:description content="Errors in Go 1.13 Whether to Wrap When adding additional context to an error, either with fmt.Errorf or by implementing a custom type, you need to decide whether the new error should wrap the …">
+<meta name=twitter:card content="summary">
+<meta name=generator content="Hugo 0.87.0">
+<link rel=alternate href=https://waffleboot.github.io/index.xml type=application/rss+xml title=yangand><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css integrity=sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y crossorigin=anonymous>
+<link rel=stylesheet href=https://use.fontawesome.com/releases/v5.5.0/css/all.css integrity=sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU crossorigin=anonymous>
+<link rel=stylesheet href=https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css integrity=sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u crossorigin=anonymous><link rel=stylesheet href=https://waffleboot.github.io/css/main.css><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+<link rel=stylesheet href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"><link rel=stylesheet href=https://waffleboot.github.io/css/syntax.css><link rel=stylesheet href=https://waffleboot.github.io/css/codeblock.css><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css integrity=sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh crossorigin=anonymous>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css integrity=sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R crossorigin=anonymous>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+<div class=container-fluid>
+<div class=navbar-header>
+<button type=button class=navbar-toggle data-toggle=collapse data-target=#main-navbar>
+<span class=sr-only>Toggle navigation</span>
+<span class=icon-bar></span>
+<span class=icon-bar></span>
+<span class=icon-bar></span>
+</button>
+<a class=navbar-brand href=https://waffleboot.github.io/>yangand</a>
+</div>
+<div class="collapse navbar-collapse" id=main-navbar>
+<ul class="nav navbar-nav navbar-right">
+</ul>
+</div>
+</div>
+</nav>
+<div class=pswp tabindex=-1 role=dialog aria-hidden=true>
+<div class=pswp__bg></div>
+<div class=pswp__scroll-wrap>
+<div class=pswp__container>
+<div class=pswp__item></div>
+<div class=pswp__item></div>
+<div class=pswp__item></div>
+</div>
+<div class="pswp__ui pswp__ui--hidden">
+<div class=pswp__top-bar>
+<div class=pswp__counter></div>
+<button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+<div class=pswp__preloader>
+<div class=pswp__preloader__icn>
+<div class=pswp__preloader__cut>
+<div class=pswp__preloader__donut></div>
+</div>
+</div>
+</div>
+</div>
+<div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+<div class=pswp__share-tooltip></div>
+</div>
+<button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+</button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+</button>
+<div class=pswp__caption>
+<div class=pswp__caption__center></div>
+</div>
+</div>
+</div>
+</div>
+<header class=header-section>
+<div class="intro-header no-img">
+<div class=container>
+<div class=row>
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<div class=posts-heading>
+<h1>Errors in Go 1.13</h1>
+<hr class=small>
+</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+<div class=container role=main>
+<div class=row>
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<article role=main class=blog-post>
+<h1 id=errors-in-go-113>Errors in Go 1.13</h1>
+<h2 id=whether-to-wrap>Whether to Wrap</h2>
+<p><strong>When adding additional context to an error,</strong> either with <code>fmt.Errorf</code> or by implementing a custom type, you need to decide whether the new error should wrap the original. There is no single answer to this question; it depends on the context in which the new error is created. Wrap an error <strong>to expose</strong> it to callers. Do not wrap an error when doing so would expose <strong>implementation</strong> details.</p>
+<p>As one example, imagine a <code>Parse</code> function which reads a complex data structure from an <code>io.Reader</code>. If an error occurs, we wish to report the line and column number at which it occurred. If the error occurs while reading from the <code>io.Reader</code>, we will want to wrap that error to allow inspection of the underlying problem. Since the caller <strong>provided</strong> the <code>io.Reader</code> to the function, it makes sense to expose the error produced by it.</p>
+<p>In contrast, a function which makes several calls <strong>to a database</strong> probably should not return an error which unwraps to the result of one of those calls. If the database used by the function <strong>is an implementation detail</strong>, then exposing these errors <strong>is a violation of abstraction</strong>. For example, if the <code>LookupUser</code> function of your package <code>pkg</code> uses Go’s <code>database/sql</code> package, then it may encounter a <code>sql.ErrNoRows</code> error.</p>
+<ul>
+<li>If you return that error with <code>fmt.Errorf("accessing DB: %v", err)</code> then a caller cannot look inside to find the <code>sql.ErrNoRows</code>.</li>
+<li>But if the function instead returns <code>fmt.Errorf("accessing DB: %w", err)</code>, then a caller could reasonably write</li>
+</ul>
+<pre><code>err := pkg.LookupUser(...)
+if errors.Is(err, sql.ErrNoRows) …
+</code></pre><p>At that point, the function <strong>must</strong> always return <code>sql.ErrNoRows</code> if you don’t want <strong>to break</strong> your clients, even if you <strong>switch</strong> to a different database package.</p>
+<p><strong>In other words, wrapping an error makes that error part of your API.<br>
+If you don’t want to commit to supporting that error as part of your API in the future, you shouldn’t wrap the error.</strong></p>
+<h2 id=customizing-error-tests-with-is-and-as-methods>Customizing error tests with Is and As methods</h2>
+<p>The <code>errors.Is</code> function examines each error in a chain for a match with a target value. By default, an error matches the target if the two are equal. In addition, an error in the chain may declare that it matches a target by implementing an <code>Is</code> <em>method</em>.</p>
+<p>It looks like about custom errors matching.</p>
+<h2 id=errors-and-package-apis>Errors and package APIs</h2>
+<p>If we wish a function to return an <strong>identifiable</strong> error condition, such as “item not found,” we might return an error wrapping a <strong>sentinel</strong>.</p>
+<pre><code>var ErrNotFound = errors.New(&quot;not found&quot;)
+
+// FetchItem returns an error wrapping ErrNotFound.
+func FetchItem(name string) (*Item, error) {
+  return nil, fmt.Errorf(&quot;%q: %w&quot;, name, ErrNotFound)
+}
+</code></pre><p>There are other existing patterns for providing errors which can be semantically examined by the caller, such as directly returning a sentinel value, a specific type, or a value which can be examined with a predicate function.</p>
+<p>In all cases, care should be taken not to expose internal details to the user. As we touched on in “Whether to Wrap” above, when you return an error from another package you should convert the error to a form that does not expose the underlying error, unless you are willing to commit to returning that specific error in the future.</p>
+<pre><code>f, err := os.Open(filename)
+if err != nil {
+    // The *os.PathError returned by os.Open is an internal detail.
+    // To avoid exposing it to the caller, repackage it as a new
+    // error with the same text. We use the %v formatting verb, since
+    // %w would permit the caller to unwrap the original *os.PathError.
+    return fmt.Errorf(&quot;%v&quot;, err)
+}
+</code></pre><p>If a function is defined as returning an error <strong>wrapping</strong> some sentinel or type, do not return the underlying error <strong>directly</strong>.</p>
+<pre><code>var ErrPermission = errors.New(&quot;permission denied&quot;)
+
+// returns an error wrapping ErrPermission
+func DoSomething() error {
+    // If we return ErrPermission directly, callers might come
+    // to depend on the exact error value, writing code like this:
+    //
+    //     if err := pkg.DoSomething(); err == pkg.ErrPermission { … }
+    //
+    // This will cause problems if we want to add additional
+    // context to the error in the future. To avoid this, we
+    // return an error wrapping the sentinel so that users must
+    // always unwrap it:
+    //
+    //     if err := pkg.DoSomething(); errors.Is(err, pkg.ErrPermission) { ... }
+    return fmt.Errorf(&quot;%w&quot;, ErrPermission)
+}
+</code></pre>
+</article>
+<ul class="pager blog-pager">
+<li class=previous>
+<a href=https://waffleboot.github.io/posts/20-golang-interfaces/ data-toggle=tooltip data-placement=top title="Golang interfaces">&larr; Previous Post</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<footer>
+<div class=container>
+<div class=row>
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<ul class="list-inline text-center footer-links">
+</ul>
+<p class="credits copyright text-muted">
+&nbsp;&bull;&nbsp;&copy;
+2021
+&nbsp;&bull;&nbsp;
+<a href=https://waffleboot.github.io/>yangand</a>
+</p>
+<p class="credits theme-by text-muted">
+<a href=https://gohugo.io>Hugo v0.87.0</a> powered &nbsp;&bull;&nbsp; Theme <a href=https://github.com/halogenica/beautifulhugo>Beautiful Hugo</a> adapted from <a href=https://deanattali.com/beautiful-jekyll/>Beautiful Jekyll</a>
+</p>
+</div>
+</div>
+</div>
+</footer><script src=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js integrity=sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js integrity=sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe crossorigin=anonymous></script>
+<script src=https://code.jquery.com/jquery-1.12.4.min.js integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin=anonymous></script>
+<script src=https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js integrity=sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa crossorigin=anonymous></script>
+<script src=https://waffleboot.github.io/js/main.js></script><script>renderMathInElement(document.body)</script><script src=https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js integrity=sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js integrity=sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q crossorigin=anonymous></script><script src=https://waffleboot.github.io/js/load-photoswipe.js></script>
+</body>
+</html>
