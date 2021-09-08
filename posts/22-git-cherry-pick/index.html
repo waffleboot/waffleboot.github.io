@@ -3,13 +3,19 @@
 <meta charset=utf-8>
 <meta http-equiv=x-ua-compatible content="IE=edge">
 <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1">
-<title>yangand - yangand</title><script type=application/ld+json>{"@context":"http://schema.org","@type":"WebSite","name":"yangand","url":"https:\/\/waffleboot.github.io\/"}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Organization","name":"","url":"https:\/\/waffleboot.github.io\/"}</script>
-<script type=application/ld+json>{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https:\/\/waffleboot.github.io\/","name":"home"}},{"@type":"ListItem","position":3,"item":{"@id":"https:\/\/waffleboot.github.io\/posts\/22-git-cherry-pick\/","name":""}}]}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Article","author":{"name":""},"headline":"","description":"","inLanguage":"en","wordCount":0,"datePublished":"0001-01-01T00:00:00","dateModified":"0001-01-01T00:00:00","image":"https:\/\/waffleboot.github.io\/","keywords":[""],"mainEntityOfPage":"https:\/\/waffleboot.github.io\/posts\/22-git-cherry-pick\/","publisher":{"@type":"Organization","name":"https:\/\/waffleboot.github.io\/","logo":{"@type":"ImageObject","url":"https:\/\/waffleboot.github.io\/","height":60,"width":60}}}</script>
-<meta property="og:title" content="yangand">
+<title>git cherry pick - yangand</title>
+<meta name=description content="Несколько версий продукта в Git
+git cherry-pick это команда по копированию коммитов. Каждый коммит внутри git это некоторое состояние проекта, а cherry-pick вычисляет разницу (по сути каждый коммит это разница между состояниями) и применяет эту разницу в нужной ветке. В вышеуказанном видео упоминается git cherry-pick -m который позволяет скопировать merge-коммит в нужную ветку. Есть master, от него отпочковывается ветка, в ней идет разработка, несколько коммитов, потом эти коммиты сливаются в master и надо например все эти коммиты перенести в следующие ветки."><script type=application/ld+json>{"@context":"http://schema.org","@type":"WebSite","name":"yangand","url":"https:\/\/waffleboot.github.io\/"}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Organization","name":"","url":"https:\/\/waffleboot.github.io\/"}</script>
+<script type=application/ld+json>{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https:\/\/waffleboot.github.io\/","name":"home"}},{"@type":"ListItem","position":3,"item":{"@id":"https:\/\/waffleboot.github.io\/posts\/22-git-cherry-pick\/","name":"Git cherry pick"}}]}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Article","author":{"name":""},"headline":"git cherry pick","description":"Несколько версий продукта в Git\ngit cherry-pick это команда по копированию коммитов. Каждый коммит внутри git это некоторое состояние проекта, а cherry-pick вычисляет разницу (по сути каждый коммит это разница между состояниями) и применяет эту разницу в нужной ветке. В вышеуказанном видео упоминается git cherry-pick -m который позволяет скопировать merge-коммит в нужную ветку. Есть master, от него отпочковывается ветка, в ней идет разработка, несколько коммитов, потом эти коммиты сливаются в master и надо например все эти коммиты перенести в следующие ветки.","inLanguage":"en","wordCount":92,"datePublished":"2021-09-08T14:30:00","dateModified":"2021-09-08T14:30:00","image":"https:\/\/waffleboot.github.io\/","keywords":[""],"mainEntityOfPage":"https:\/\/waffleboot.github.io\/posts\/22-git-cherry-pick\/","publisher":{"@type":"Organization","name":"https:\/\/waffleboot.github.io\/","logo":{"@type":"ImageObject","url":"https:\/\/waffleboot.github.io\/","height":60,"width":60}}}</script>
+<meta property="og:title" content="git cherry pick">
+<meta property="og:description" content="Несколько версий продукта в Git
+git cherry-pick это команда по копированию коммитов. Каждый коммит внутри git это некоторое состояние проекта, а cherry-pick вычисляет разницу (по сути каждый коммит это разница между состояниями) и применяет эту разницу в нужной ветке. В вышеуказанном видео упоминается git cherry-pick -m который позволяет скопировать merge-коммит в нужную ветку. Есть master, от него отпочковывается ветка, в ней идет разработка, несколько коммитов, потом эти коммиты сливаются в master и надо например все эти коммиты перенести в следующие ветки.">
 <meta property="og:url" content="https://waffleboot.github.io/posts/22-git-cherry-pick/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="yangand">
-<meta name=twitter:title content="yangand">
+<meta name=twitter:title content="git cherry pick">
+<meta name=twitter:description content="Несколько версий продукта в Git
+git cherry-pick это команда по копированию коммитов. Каждый коммит внутри git это некоторое состояние проекта, а cherry-pick вычисляет разницу (по сути каждый коммит …">
 <meta name=twitter:card content="summary">
 <meta name=generator content="Hugo 0.88.1">
 <link rel=alternate href=https://waffleboot.github.io/index.xml type=application/rss+xml title=yangand><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css integrity=sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y crossorigin=anonymous>
@@ -72,15 +78,31 @@
 </div>
 </div>
 </div>
-<div class=intro-header></div>
+<header class=header-section>
+<div class="intro-header no-img">
+<div class=container>
+<div class=row>
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<div class=posts-heading>
+<h1>git cherry pick</h1>
+<hr class=small>
+</div>
+</div>
+</div>
+</div>
+</div>
+</header>
 <div class=container role=main>
 <div class=row>
 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 <article role=main class=blog-post>
+<p><a href="https://www.youtube.com/watch?v=qpr8iaEQXZU">Несколько версий продукта в Git</a></p>
+<p><code>git cherry-pick</code> это команда по копированию коммитов. Каждый коммит внутри git это некоторое состояние проекта, а cherry-pick вычисляет разницу (по сути каждый коммит это разница между состояниями) и применяет эту разницу в нужной ветке. В вышеуказанном видео упоминается <code>git cherry-pick -m</code> который позволяет скопировать merge-коммит в нужную ветку. Есть master, от него отпочковывается ветка, в ней идет разработка, несколько коммитов, потом эти коммиты сливаются в master и надо например все эти коммиты перенести в следующие ветки. Вот чтобы не таскать все эти коммиты можно скопировать один merge-коммит.</p>
+<p><img src=/static/22.png alt="git merge + cherry-pick"></p>
 </article>
 <ul class="pager blog-pager">
-<li class=next>
-<a href=https://waffleboot.github.io/posts/2-api-config/ data-toggle=tooltip data-placement=top title="Про параметры функции, публикуемых в открытый доступ">Next Post &rarr;</a>
+<li class=previous>
+<a href=https://waffleboot.github.io/posts/21-errors-in-go/ data-toggle=tooltip data-placement=top title="Errors in Go 1.13">&larr; Previous Post</a>
 </li>
 </ul>
 </div>
