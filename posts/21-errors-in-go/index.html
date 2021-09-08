@@ -14,7 +14,7 @@
 <meta name=twitter:title content="Errors in Go 1.13">
 <meta name=twitter:description content="Errors in Go 1.13 Whether to Wrap When adding additional context to an error, either with fmt.Errorf or by implementing a custom type, you need to decide whether the new error should wrap the …">
 <meta name=twitter:card content="summary">
-<meta name=generator content="Hugo 0.87.0">
+<meta name=generator content="Hugo 0.88.1">
 <link rel=alternate href=https://waffleboot.github.io/index.xml type=application/rss+xml title=yangand><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css integrity=sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y crossorigin=anonymous>
 <link rel=stylesheet href=https://use.fontawesome.com/releases/v5.5.0/css/all.css integrity=sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU crossorigin=anonymous>
 <link rel=stylesheet href=https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css integrity=sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u crossorigin=anonymous><link rel=stylesheet href=https://waffleboot.github.io/css/main.css><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
@@ -102,7 +102,7 @@
 <li>If you return that error with <code>fmt.Errorf("accessing DB: %v", err)</code> then a caller cannot look inside to find the <code>sql.ErrNoRows</code>.</li>
 <li>But if the function instead returns <code>fmt.Errorf("accessing DB: %w", err)</code>, then a caller could reasonably write</li>
 </ul>
-<pre><code>err := pkg.LookupUser(...)
+<pre tabindex=0><code>err := pkg.LookupUser(...)
 if errors.Is(err, sql.ErrNoRows) …
 </code></pre><p>At that point, the function <strong>must</strong> always return <code>sql.ErrNoRows</code> if you don’t want <strong>to break</strong> your clients, even if you <strong>switch</strong> to a different database package.</p>
 <p><strong>In other words, wrapping an error makes that error part of your API.<br>
@@ -112,7 +112,7 @@ If you don’t want to commit to supporting that error as part of your API in th
 <p>It looks like about custom errors matching.</p>
 <h2 id=errors-and-package-apis>Errors and package APIs</h2>
 <p>If we wish a function to return an <strong>identifiable</strong> error condition, such as “item not found,” we might return an error wrapping a <strong>sentinel</strong>.</p>
-<pre><code>var ErrNotFound = errors.New(&quot;not found&quot;)
+<pre tabindex=0><code>var ErrNotFound = errors.New(&quot;not found&quot;)
 
 // FetchItem returns an error wrapping ErrNotFound.
 func FetchItem(name string) (*Item, error) {
@@ -120,7 +120,7 @@ func FetchItem(name string) (*Item, error) {
 }
 </code></pre><p>There are other existing patterns for providing errors which can be semantically examined by the caller, such as directly returning a sentinel value, a specific type, or a value which can be examined with a predicate function.</p>
 <p>In all cases, care should be taken not to expose internal details to the user. As we touched on in “Whether to Wrap” above, when you return an error from another package you should convert the error to a form that does not expose the underlying error, unless you are willing to commit to returning that specific error in the future.</p>
-<pre><code>f, err := os.Open(filename)
+<pre tabindex=0><code>f, err := os.Open(filename)
 if err != nil {
     // The *os.PathError returned by os.Open is an internal detail.
     // To avoid exposing it to the caller, repackage it as a new
@@ -129,7 +129,7 @@ if err != nil {
     return fmt.Errorf(&quot;%v&quot;, err)
 }
 </code></pre><p>If a function is defined as returning an error <strong>wrapping</strong> some sentinel or type, do not return the underlying error <strong>directly</strong>.</p>
-<pre><code>var ErrPermission = errors.New(&quot;permission denied&quot;)
+<pre tabindex=0><code>var ErrPermission = errors.New(&quot;permission denied&quot;)
 
 // returns an error wrapping ErrPermission
 func DoSomething() error {
@@ -169,7 +169,7 @@ func DoSomething() error {
 <a href=https://waffleboot.github.io/>yangand</a>
 </p>
 <p class="credits theme-by text-muted">
-<a href=https://gohugo.io>Hugo v0.87.0</a> powered &nbsp;&bull;&nbsp; Theme <a href=https://github.com/halogenica/beautifulhugo>Beautiful Hugo</a> adapted from <a href=https://deanattali.com/beautiful-jekyll/>Beautiful Jekyll</a>
+<a href=https://gohugo.io>Hugo v0.88.1</a> powered &nbsp;&bull;&nbsp; Theme <a href=https://github.com/halogenica/beautifulhugo>Beautiful Hugo</a> adapted from <a href=https://deanattali.com/beautiful-jekyll/>Beautiful Jekyll</a>
 </p>
 </div>
 </div>

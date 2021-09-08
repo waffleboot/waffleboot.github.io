@@ -17,7 +17,7 @@ func NewWorkerPool(maxWorkers int, jobQueueCapacity int) *Pool Я предлож
 <meta name=twitter:description content="Изучал код worker пула https://github.com/ahmetask/worker и там есть такая функция NewWorkerPool(maxWorkers, jobQueueCapacity):
 func NewWorkerPool(maxWorkers int, jobQueueCapacity int) *Pool Я …">
 <meta name=twitter:card content="summary">
-<meta name=generator content="Hugo 0.87.0">
+<meta name=generator content="Hugo 0.88.1">
 <link rel=alternate href=https://waffleboot.github.io/index.xml type=application/rss+xml title=yangand><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css integrity=sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y crossorigin=anonymous>
 <link rel=stylesheet href=https://use.fontawesome.com/releases/v5.5.0/css/all.css integrity=sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU crossorigin=anonymous>
 <link rel=stylesheet href=https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css integrity=sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u crossorigin=anonymous><link rel=stylesheet href=https://waffleboot.github.io/css/main.css><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
@@ -97,9 +97,9 @@ func NewWorkerPool(maxWorkers int, jobQueueCapacity int) *Pool Я …">
 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 <article role=main class=blog-post>
 <p>Изучал код worker пула <a href=https://github.com/ahmetask/worker>https://github.com/ahmetask/worker</a> и там есть такая функция NewWorkerPool(maxWorkers, jobQueueCapacity):</p>
-<pre><code>func NewWorkerPool(maxWorkers int, jobQueueCapacity int) *Pool
+<pre tabindex=0><code>func NewWorkerPool(maxWorkers int, jobQueueCapacity int) *Pool
 </code></pre><p>Я предложил сделать отдельную структуру под конфигурацию workerPoolConfig и worker пул иницилизировать не через параметры, а через функциональные опции, через &mldr;Opts. Добавить функцию buildWorkerPoolConfig, которая бы эти &mldr;Opts читала и создавала конфиг, дополнительно валидируя параметры. Заслал PR, чел отказался фиксить по причине, что сломается обратная совместимость, а либа и так простая, так что нет смысла.</p>
-<pre><code>type config struct
+<pre tabindex=0><code>type config struct
 type opts func(* config)
 func WithMaxWorkers(maxWorkers int) opts
 func WithJobQueueCapacity(jobQueueCapacity int) opts
@@ -120,7 +120,7 @@ pool := worker.NewWorkerPool(
   worker.WithJobQueueCapacity(4))
 </code></pre><p>Вот и возникает вопрос. Если бы надо было добавить дополнительный параметр, то все равно пришлось бы править эту функцию или создавать еще одну, которая воспринимала бы дополнительный параметр. А с функциональными опциями такой проблемы нет. Старый код как работал, так и будет работать, а для нового кода просто еще одна опция добавляется, с которой мы умеем работать.</p>
 <p><a href=https://github.com/uber-go/guide/blob/master/style.md#functional-options>Uber style guide</a> рекомендует использовать не функции, а интерфейсы.</p>
-<pre><code>type options struct {
+<pre tabindex=0><code>type options struct {
 	maxWorkers       int
 	jobQueueCapacity int
 }
@@ -167,6 +167,9 @@ func buildWorkerPoolOptions(opts ...Option) options {
 </code></pre>
 </article>
 <ul class="pager blog-pager">
+<li class=previous>
+<a href=https://waffleboot.github.io/posts/22-git-cherry-pick/ data-toggle=tooltip data-placement=top title>&larr; Previous Post</a>
+</li>
 <li class=next>
 <a href=https://waffleboot.github.io/posts/3-golang-timers-netpoller/ data-toggle=tooltip data-placement=top title="Golang таймеры и netpoller">Next Post &rarr;</a>
 </li>
@@ -187,7 +190,7 @@ func buildWorkerPoolOptions(opts ...Option) options {
 <a href=https://waffleboot.github.io/>yangand</a>
 </p>
 <p class="credits theme-by text-muted">
-<a href=https://gohugo.io>Hugo v0.87.0</a> powered &nbsp;&bull;&nbsp; Theme <a href=https://github.com/halogenica/beautifulhugo>Beautiful Hugo</a> adapted from <a href=https://deanattali.com/beautiful-jekyll/>Beautiful Jekyll</a>
+<a href=https://gohugo.io>Hugo v0.88.1</a> powered &nbsp;&bull;&nbsp; Theme <a href=https://github.com/halogenica/beautifulhugo>Beautiful Hugo</a> adapted from <a href=https://deanattali.com/beautiful-jekyll/>Beautiful Jekyll</a>
 </p>
 </div>
 </div>
