@@ -84,3 +84,27 @@ func buildWorkerPoolOptions(opts ...Option) options {
 }
 
 ```
+
+На случай если не хотим создавать отдельный тип данных под настройку можно использовать функции:
+
+```
+type config struct {
+    addr string
+}
+type option interface {
+    apply(*config)
+}
+type funcOption struct {
+    f func(*config)
+}
+func (o funcOption) apply(c *config) {
+    o.f(c)
+}
+func WithAddr(addr string) option {
+    return funcOption{
+        f: func(c *config) {
+            c.addr = addr
+        }
+    }
+}
+```
