@@ -6,7 +6,7 @@
 <title>Про параметры функции, публикуемых в открытый доступ - yangand</title>
 <meta name=description content="Изучал код worker пула https://github.com/ahmetask/worker и там есть такая функция NewWorkerPool(maxWorkers, jobQueueCapacity):
 func NewWorkerPool(maxWorkers int, jobQueueCapacity int) *Pool Я предложил сделать отдельную структуру под конфигурацию workerPoolConfig и worker пул иницилизировать не через параметры, а через функциональные опции, через &mldr;Opts. Добавить функцию buildWorkerPoolConfig, которая бы эти &mldr;Opts читала и создавала конфиг, дополнительно валидируя параметры. Заслал PR, чел отказался фиксить по причине, что сломается обратная совместимость, а либа и так простая, так что нет смысла."><script type=application/ld+json>{"@context":"http://schema.org","@type":"WebSite","name":"yangand","url":"https:\/\/waffleboot.github.io\/"}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Organization","name":"","url":"https:\/\/waffleboot.github.io\/"}</script>
-<script type=application/ld+json>{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https:\/\/waffleboot.github.io\/","name":"home"}},{"@type":"ListItem","position":3,"item":{"@id":"https:\/\/waffleboot.github.io\/posts\/2-api-config\/","name":"Про параметры функции, публикуемых в открытый доступ"}}]}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Article","author":{"name":""},"headline":"Про параметры функции, публикуемых в открытый доступ","description":"Изучал код worker пула https:\/\/github.com\/ahmetask\/worker и там есть такая функция NewWorkerPool(maxWorkers, jobQueueCapacity):\nfunc NewWorkerPool(maxWorkers int, jobQueueCapacity int) *Pool Я предложил сделать отдельную структуру под конфигурацию workerPoolConfig и worker пул иницилизировать не через параметры, а через функциональные опции, через \u0026hellip;Opts. Добавить функцию buildWorkerPoolConfig, которая бы эти \u0026hellip;Opts читала и создавала конфиг, дополнительно валидируя параметры. Заслал PR, чел отказался фиксить по причине, что сломается обратная совместимость, а либа и так простая, так что нет смысла.","inLanguage":"en","wordCount":287,"datePublished":"2021-08-05T00:40:05","dateModified":"2021-08-05T00:40:05","image":"https:\/\/waffleboot.github.io\/","keywords":[""],"mainEntityOfPage":"https:\/\/waffleboot.github.io\/posts\/2-api-config\/","publisher":{"@type":"Organization","name":"https:\/\/waffleboot.github.io\/","logo":{"@type":"ImageObject","url":"https:\/\/waffleboot.github.io\/","height":60,"width":60}}}</script>
+<script type=application/ld+json>{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https:\/\/waffleboot.github.io\/","name":"home"}},{"@type":"ListItem","position":3,"item":{"@id":"https:\/\/waffleboot.github.io\/posts\/2-api-config\/","name":"Про параметры функции, публикуемых в открытый доступ"}}]}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Article","author":{"name":""},"headline":"Про параметры функции, публикуемых в открытый доступ","description":"Изучал код worker пула https:\/\/github.com\/ahmetask\/worker и там есть такая функция NewWorkerPool(maxWorkers, jobQueueCapacity):\nfunc NewWorkerPool(maxWorkers int, jobQueueCapacity int) *Pool Я предложил сделать отдельную структуру под конфигурацию workerPoolConfig и worker пул иницилизировать не через параметры, а через функциональные опции, через \u0026hellip;Opts. Добавить функцию buildWorkerPoolConfig, которая бы эти \u0026hellip;Opts читала и создавала конфиг, дополнительно валидируя параметры. Заслал PR, чел отказался фиксить по причине, что сломается обратная совместимость, а либа и так простая, так что нет смысла.","inLanguage":"en","wordCount":346,"datePublished":"2021-08-05T00:40:05","dateModified":"2021-08-05T00:40:05","image":"https:\/\/waffleboot.github.io\/","keywords":[""],"mainEntityOfPage":"https:\/\/waffleboot.github.io\/posts\/2-api-config\/","publisher":{"@type":"Organization","name":"https:\/\/waffleboot.github.io\/","logo":{"@type":"ImageObject","url":"https:\/\/waffleboot.github.io\/","height":60,"width":60}}}</script>
 <meta property="og:title" content="Про параметры функции, публикуемых в открытый доступ">
 <meta property="og:description" content="Изучал код worker пула https://github.com/ahmetask/worker и там есть такая функция NewWorkerPool(maxWorkers, jobQueueCapacity):
 func NewWorkerPool(maxWorkers int, jobQueueCapacity int) *Pool Я предложил сделать отдельную структуру под конфигурацию workerPoolConfig и worker пул иницилизировать не через параметры, а через функциональные опции, через &mldr;Opts. Добавить функцию buildWorkerPoolConfig, которая бы эти &mldr;Opts читала и создавала конфиг, дополнительно валидируя параметры. Заслал PR, чел отказался фиксить по причине, что сломается обратная совместимость, а либа и так простая, так что нет смысла.">
@@ -164,6 +164,26 @@ func buildWorkerPoolOptions(opts ...Option) options {
 	return options
 }
 
+</code></pre><p>На случай если не хотим создавать отдельный тип данных под настройку можно использовать функции:</p>
+<pre tabindex=0><code>type config struct {
+    addr string
+}
+type option interface {
+    apply(*config)
+}
+type funcOption struct {
+    f func(*config)
+}
+func (o funcOption) apply(c *config) {
+    o.f(c)
+}
+func WithAddr(addr string) option {
+    return funcOption{
+        f: func(c *config) {
+            c.addr = addr
+        }
+    }
+}
 </code></pre>
 </article>
 <ul class="pager blog-pager">
