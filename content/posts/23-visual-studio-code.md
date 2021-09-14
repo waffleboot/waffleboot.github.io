@@ -1,5 +1,5 @@
 ---
-title: "1"
+title: "visual studio code shortcuts"
 date: 2021-09-14T11:57:43+03:00
 draft: false
 ---
