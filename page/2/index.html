@@ -90,6 +90,33 @@
 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 <div class=posts-list>
 <article class=post-preview>
+<a href=https://waffleboot.github.io/posts/14-linux-netpoll/>
+<h2 class=post-title>netpoll</h2>
+</a>
+<p class=post-meta>
+<span class=post-meta>
+<i class="fas fa-calendar"></i>&nbsp;Posted on August 17, 2021
+&nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;
+</span>
+</p>
+<div class=post-entry>
+The implementaion of epoll part 1
+part 2
+part 3
+part 4
+Application of epoll in golang
+Deep analysis of source code for building native network model with go netpol I / O multiplexing
+Detailed Golang Net NetPoll
+Golang underlay NetPoll
+Detailed Golang Net Transport
+Talk about Golang NetPoll Principles (1)
+Talk about the netpoll principle of golang (2)
+Golang Net HTTP Server
+epoll - from the kernel side
+<a href=https://waffleboot.github.io/posts/14-linux-netpoll/ class=post-read-more>[Read More]</a>
+</div>
+</article>
+<article class=post-preview>
 <a href=https://waffleboot.github.io/posts/13-linux-ebpf/>
 <h2 class=post-title>Linux eBPF</h2>
 </a>
@@ -278,26 +305,13 @@ for _, tt := range tests {
 <a href=https://waffleboot.github.io/posts/3-golang-timers-netpoller/ class=post-read-more>[Read More]</a>
 </div>
 </article>
-<article class=post-preview>
-<a href=https://waffleboot.github.io/posts/2-api-config/>
-<h2 class=post-title>Про параметры функции, публикуемых в открытый доступ</h2>
-</a>
-<p class=post-meta>
-<span class=post-meta>
-<i class="fas fa-calendar"></i>&nbsp;Posted on August 5, 2021
-&nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;
-</span>
-</p>
-<div class=post-entry>
-Изучал код worker пула https://github.com/ahmetask/worker и там есть такая функция NewWorkerPool(maxWorkers, jobQueueCapacity):
-func NewWorkerPool(maxWorkers int, jobQueueCapacity int) *Pool Я предложил сделать отдельную структуру под конфигурацию workerPoolConfig и worker пул иницилизировать не через параметры, а через функциональные опции, через &mldr;Opts. Добавить функцию buildWorkerPoolConfig, которая бы эти &mldr;Opts читала и создавала конфиг, дополнительно валидируя параметры. Заслал PR, чел отказался фиксить по причине, что сломается обратная совместимость, а либа и так простая, так что нет смысла.
-<a href=https://waffleboot.github.io/posts/2-api-config/ class=post-read-more>[Read More]</a>
-</div>
-</article>
 </div>
 <ul class="pager main-pager">
 <li class=previous>
 <a href=https://waffleboot.github.io/page/1/>&larr; Newer Posts</a>
+</li>
+<li class=next>
+<a href=https://waffleboot.github.io/page/3/>Older Posts &rarr;</a>
 </li>
 </ul>
 </div>
