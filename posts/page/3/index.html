@@ -90,6 +90,22 @@
 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 <div class=posts-list>
 <article class=post-preview>
+<a href=https://waffleboot.github.io/posts/3-golang-timers-netpoller/>
+<h2 class=post-title>Golang таймеры и netpoller</h2>
+</a>
+<p class=post-meta>
+<span class=post-meta>
+<i class="fas fa-calendar"></i>&nbsp;Posted on August 5, 2021
+&nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;
+</span>
+</p>
+<div class=post-entry>
+Прикольно. timer работает в связке с netpoller. Все таймеры кладутся в heap (структура данных) чтобы выбрать ближайший, при этом у каждого P свой heap. netpoller так-то заточен под asyncio, но блокирующий epoll syscall вызывается с таймаутом по ближайший таймер. Понятно, если придет io event, он проснется, выдаст пачку файловых дескрипторов и снова уснет, но время сна скорректируется. А если по таймауту проснется - дергаем таймер.
+Самое интересное, когда добавляем таймер который должен тикнуть раньше времени таймаута netpoller.
+<a href=https://waffleboot.github.io/posts/3-golang-timers-netpoller/ class=post-read-more>[Read More]</a>
+</div>
+</article>
+<article class=post-preview>
 <a href=https://waffleboot.github.io/posts/2-api-config/>
 <h2 class=post-title>Про параметры функции, публикуемых в открытый доступ</h2>
 </a>
