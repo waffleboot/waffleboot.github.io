@@ -90,6 +90,24 @@
 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 <div class=posts-list>
 <article class=post-preview>
+<a href=https://waffleboot.github.io/posts/26-go-interfaces/>
+<h2 class=post-title>Про Go интерфейсы</h2>
+</a>
+<p class=post-meta>
+<span class=post-meta>
+<i class="fas fa-calendar"></i>&nbsp;Posted on November 12, 2021
+&nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;
+</span>
+</p>
+<div class=post-entry>
+модули должны обладать:
+высокой специализацей низкой связностью с другими модулями один пакет знает только про интерфейс второй про интерфейс ничего не знает, а только его реализует описываются там где используются должны содержать только то, что используется Целью интерфейсов является ограничить распространение сложности, иначе может быть отравление кода сложностью базы данных.
+&ldquo;Маленькое копирование лучше маленькой связности&rdquo;
+Поэтому нет ничего страшного в том, чтобы скопировать интерфейс в кучу мест, а не тянуть зависимость по модулям.
+<a href=https://waffleboot.github.io/posts/26-go-interfaces/ class=post-read-more>[Read More]</a>
+</div>
+</article>
+<article class=post-preview>
 <a href=https://waffleboot.github.io/posts/25-code-review/>
 <h2 class=post-title>Про обратную связь на code review</h2>
 </a>
@@ -333,23 +351,6 @@ Errors in Go 1.13 Whether to Wrap When adding additional context to an error, ei
 </p>
 <div class=post-entry>
 <p><a href=https://scons.org/doc/production/HTML/scons-man.html>scons-man</a></p>
-</div>
-</article>
-<article class=post-preview>
-<a href=https://waffleboot.github.io/posts/17-inet-lookup/>
-<h2 class=post-title>Как tcp находит свой сокет</h2>
-</a>
-<p class=post-meta>
-<span class=post-meta>
-<i class="fas fa-calendar"></i>&nbsp;Posted on August 20, 2021
-&nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;
-</span>
-</p>
-<div class=post-entry>
-Сетевой стек linux содержит 4 хэш-таблицы для быстрого поиска сокета для входящего пакета:
-ehash для установленных соединений bhash для bind lhash2 для listen соединение как вида addr:port, так и any_addr:port listening_hash как простое хранилище listen-сокетов linux listen socket lookup
-Размер ehash таблицы регулируется параметром thash_entries. The default is 65536 entries for every gigabyte of memory. In other words, an 8-gigabyte system will have 512k hash entries. Но этого более чем достаточно.
-<a href=https://waffleboot.github.io/posts/17-inet-lookup/ class=post-read-more>[Read More]</a>
 </div>
 </article>
 </div>

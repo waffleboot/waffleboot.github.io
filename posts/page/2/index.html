@@ -90,6 +90,23 @@
 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 <div class=posts-list>
 <article class=post-preview>
+<a href=https://waffleboot.github.io/posts/17-inet-lookup/>
+<h2 class=post-title>Как tcp находит свой сокет</h2>
+</a>
+<p class=post-meta>
+<span class=post-meta>
+<i class="fas fa-calendar"></i>&nbsp;Posted on August 20, 2021
+&nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;
+</span>
+</p>
+<div class=post-entry>
+Сетевой стек linux содержит 4 хэш-таблицы для быстрого поиска сокета для входящего пакета:
+ehash для установленных соединений bhash для bind lhash2 для listen соединение как вида addr:port, так и any_addr:port listening_hash как простое хранилище listen-сокетов linux listen socket lookup
+Размер ehash таблицы регулируется параметром thash_entries. The default is 65536 entries for every gigabyte of memory. In other words, an 8-gigabyte system will have 512k hash entries. Но этого более чем достаточно.
+<a href=https://waffleboot.github.io/posts/17-inet-lookup/ class=post-read-more>[Read More]</a>
+</div>
+</article>
+<article class=post-preview>
 <a href=https://waffleboot.github.io/posts/16-git-reflog/>
 <h2 class=post-title>Git Reflog</h2>
 </a>
@@ -268,44 +285,6 @@ service-aggregator (+graceful degradation)
 func main() { f, err := os.Create("trace.out") if err != nil { log.Fatal(err) } defer f.Close() if err := trace.Start(f); err != nil { log.Fatal(err) } go func() { // runtime.PreemptNS(1000) for { _x++ } }() &lt;-time.After(3 * time.Second) runtime.GC() defer trace.Stop() } это содержимое trace.out при запуске с GOMAXPROCS=1
 // сначала идет список горутин на момент запуска trace.Start // G1 в статусе running, остальные в статусе waiting потому что P у нас только один 1: GoCreate /Users/yangand/Workspace/go_infinite_loop/main.
 <a href=https://waffleboot.github.io/posts/7-golang-trace/ class=post-read-more>[Read More]</a>
-</div>
-</article>
-<article class=post-preview>
-<a href=https://waffleboot.github.io/posts/5-golang-naming/>
-<h2 class=post-title>Golang Naming</h2>
-</a>
-<p class=post-meta>
-<span class=post-meta>
-<i class="fas fa-calendar"></i>&nbsp;Posted on August 7, 2021
-&nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;
-</span>
-</p>
-<div class=post-entry>
-<pre tabindex=0><code>for _, tt := range tests {
-}
-</code></pre><p>Смысл в удваивании имени переменной когда итерируем по слайсу.
-Это применяется в тестах.</p>
-<pre tabindex=0><code>tests := []struct {
-	give     string
-	wantHost string
-	wantPort string
-}{
-	{
-		give:     &quot;&quot;,
-		wantHost: &quot;&quot;,
-		wantPort: &quot;&quot;,
-	},
-}
-
-for _, tt := range tests {
-  t.Run(tt.give, func(t *testing.T) {
-    host, port, err := net.SplitHostPort(tt.give)
-    require.NoError(t, err)
-    assert.Equal(t, tt.wantHost, host)
-    assert.Equal(t, tt.wantPort, port)
-  })
-}
-</code></pre>
 </div>
 </article>
 </div>
