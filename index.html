@@ -90,6 +90,23 @@
 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 <div class=posts-list>
 <article class=post-preview>
+<a href=https://waffleboot.github.io/posts/27-protobuf/>
+<h2 class=post-title>protobuf</h2>
+</a>
+<p class=post-meta>
+<span class=post-meta>
+<i class="fas fa-calendar"></i>&nbsp;Posted on November 15, 2021
+&nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;
+</span>
+</p>
+<div class=post-entry>
+Пытаюсь понять как работает grpc-gateway
+syntax = "proto3"; import "google/api/annotations.proto"; service Service { rpc Method(Request) returns (Response) { option (google.api.http) = { post: "/endpoint" body: "*" }; } } Оказывается:
+protoc это компилятор и содержит parser.cc, который парсит .proto файлы и option поначалу выгрызает как строку, как uninterpreted_option затем работает DescriptorBuilder и он эту строку парсит и превращает в message и проставляет полученный message в http поле поэтому в grpc-gateway плагин приходит описание без uninterpreted_option, а в виде описания опции метода, которое содержит поле http а это поле http появляется там из-за механизма extension annotations.
+<a href=https://waffleboot.github.io/posts/27-protobuf/ class=post-read-more>[Read More]</a>
+</div>
+</article>
+<article class=post-preview>
 <a href=https://waffleboot.github.io/posts/26-go-interfaces/>
 <h2 class=post-title>Про Go интерфейсы</h2>
 </a>
@@ -337,20 +354,6 @@ Errors in Go 1.13 Whether to Wrap When adding additional context to an error, ei
 <li>all other methods</li>
 <li>data members</li>
 </ul>
-</div>
-</article>
-<article class=post-preview>
-<a href=https://waffleboot.github.io/posts/18-python-scons-mongo/>
-<h2 class=post-title>Python scons build tool</h2>
-</a>
-<p class=post-meta>
-<span class=post-meta>
-<i class="fas fa-calendar"></i>&nbsp;Posted on August 20, 2021
-&nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;
-</span>
-</p>
-<div class=post-entry>
-<p><a href=https://scons.org/doc/production/HTML/scons-man.html>scons-man</a></p>
 </div>
 </article>
 </div>
