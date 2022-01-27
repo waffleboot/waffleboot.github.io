@@ -1,4 +1,25 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on yangand</title><link>https://waffleboot.github.io/posts/</link><description>Recent content in Posts on yangand</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 28 Dec 2021 07:09:34 +0300</lastBuildDate><atom:link href="https://waffleboot.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Про hexlet</title><link>https://waffleboot.github.io/posts/30-hexlet/</link><pubDate>Tue, 28 Dec 2021 07:09:34 +0300</pubDate><guid>https://waffleboot.github.io/posts/30-hexlet/</guid><description>Собеседование senior backend-разработчика / Node.js
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on yangand</title><link>https://waffleboot.github.io/posts/</link><description>Recent content in Posts on yangand</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 27 Jan 2022 07:09:34 +0300</lastBuildDate><atom:link href="https://waffleboot.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>как учить k8s</title><link>https://waffleboot.github.io/posts/32-k8s/</link><pubDate>Thu, 27 Jan 2022 07:09:34 +0300</pubDate><guid>https://waffleboot.github.io/posts/32-k8s/</guid><description>kodekloud
+kodekloud
+killer.sh
+kube-selfpaced
+eks
+the hard way
+cloud guru
+book
+udemy
+CKAD
+CKA
+CKS
+курсы от Sander Van Vught
+Kubernetes in Production Best Practices Build and manage highly available production-ready Kubernetes clusters by Aly Saleh, Murat Karslioglu
+sealed-secrets
+alb
+velero
+calico
+argocd
+argo-workflows
+argocd-notifications
+argocd-appset</description></item><item><title>Лекции ФПМИ на youtube</title><link>https://waffleboot.github.io/posts/31-fpmi/</link><pubDate>Mon, 17 Jan 2022 07:09:34 +0300</pubDate><guid>https://waffleboot.github.io/posts/31-fpmi/</guid><description>Посмотри лекции ФПМИ на youtube</description></item><item><title>Про hexlet</title><link>https://waffleboot.github.io/posts/30-hexlet/</link><pubDate>Tue, 28 Dec 2021 07:09:34 +0300</pubDate><guid>https://waffleboot.github.io/posts/30-hexlet/</guid><description>Собеседование senior backend-разработчика / Node.js
 Концепция ментального программирования использовать EXTERNAL_ID при ссылке на объекты в другом сервисе, должны быть свои ID для каждой сущности, даже внешней Правильно это не про код, а о маленьких правильных решениях которые не создадут потом проблем</description></item><item><title>Production checklist</title><link>https://waffleboot.github.io/posts/29-prod-check-list/</link><pubDate>Wed, 22 Dec 2021 07:09:34 +0300</pubDate><guid>https://waffleboot.github.io/posts/29-prod-check-list/</guid><description> timeout circuit breaker rate limiter</description></item><item><title>Ram Disk</title><link>https://waffleboot.github.io/posts/28-ram-disk/</link><pubDate>Wed, 01 Dec 2021 07:09:34 +0300</pubDate><guid>https://waffleboot.github.io/posts/28-ram-disk/</guid><description>RAM disk на 1Гб
 2097152 = 2048 * 1024
 diskutil erasevolume HFS+ &amp;quot;RAMDisk&amp;quot; `hdiutil attach -nomount ram://2097152`</description></item><item><title>protobuf</title><link>https://waffleboot.github.io/posts/27-protobuf/</link><pubDate>Mon, 15 Nov 2021 15:11:51 +0300</pubDate><guid>https://waffleboot.github.io/posts/27-protobuf/</guid><description>Пытаюсь понять как работает grpc-gateway
