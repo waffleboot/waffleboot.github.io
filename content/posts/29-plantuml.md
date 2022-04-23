@@ -7,3 +7,5 @@ draft: false
 ```bash
 $ docker run -d -p 8080:8080 --read-only -v /tmp/jetty plantuml/plantuml-server:jetty
 ```
+
+Запустить в Visual Studio Code preview - `option + d`
