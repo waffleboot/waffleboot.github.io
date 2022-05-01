@@ -10,6 +10,6 @@ $ docker run -d -p 8080:8080 --name plantuml --read-only -v /tmp/jetty plantuml/
 
 Запустить в Visual Studio Code preview - `option + d`
 
-https://github.com/plantuml/plantuml-server
+[plantuml-server-github](https://github.com/plantuml/plantuml-server)
 
-http://localhost:8080
+[localhost:8080](http://localhost:8080)
